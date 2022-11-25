@@ -4,7 +4,7 @@ from entities.reference import Reference
 
 class ReferenceRepository:
 
-    def __init__(self, connection):
+    def __init__(self, connection=get_database_connection()):
         self._connection = connection
         pass
 
