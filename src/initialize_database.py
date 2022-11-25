@@ -137,6 +137,8 @@ def create_mock_data(connection):
                         reference["note"]]
                        )
 
+        connection.commit()
+
 
 def initialize_database():
     """Calls a method to activate the object that enables database connection.
