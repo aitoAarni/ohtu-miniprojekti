@@ -9,4 +9,5 @@ Paketoidaan sovelluksen toimintalogiikka
 
 ## Linkit
 
+
 [Structured Backlog](https://docs.google.com/spreadsheets/d/1XYFtrZ4NT5crDIYqlv-1CX1kRro6Nn1QrsbifLbLkDY/edit?usp=sharing)
