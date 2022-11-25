@@ -1,5 +1,6 @@
 # ohtu-miniprojekti
 
+![workflow](https://github.com/aitoAarni/ohtu-miniprojekti/actions/workflows/CI/badge.svg)
 
 ## Sovelluksen rakenne
 Paketoidaan sovelluksen toimintalogiikka
