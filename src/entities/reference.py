@@ -1,5 +1,8 @@
-class ArticleReference:
-    def __init__(self) -> None:
+
+
+class Reference:
+
+    def __init__(self):
         self.fields = {
             "author": None,
             "title": None,
