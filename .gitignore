@@ -4,4 +4,4 @@ __pycache__/
 *.tmp
 .coverage
 htmlcov/
-data/database.db
+data/
