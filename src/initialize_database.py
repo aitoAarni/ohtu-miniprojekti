@@ -28,12 +28,16 @@ def create_tables(connection):
 
     cursor.execute('''
         CREATE TABLE REFERENCE (
-            citekey TEXT UNIQUE NOT NULL,
-            author TEXT NOT NULL,
-            title TEXT NOT NULL,
-            journal TEXT NOT NULL,
-            year INTEGER NOT NULL,
+            citekey TEXT UNIQUE,
+            author TEXT,
+            title TEXT,
+            publisher TEXT,
+            journal TEXT,
+            year INTEGER,
             volume_or_number TEXT,
+            volume TEXT,
+            number TEXT,
+            pages, INTEGER,
             series TEXT,
             address TEXT,
             edition TEXT,
@@ -69,10 +73,9 @@ def create_mock_data(connection):
         "title": "Data Structures and Algorithms",
         "journal": "Fantastic Algorithms",
         "year": 2000,
-        "volume_or_number": "vol. 202",
-        "series": None,
-        "address": "https://cormen.com",
-        "edition": None,
+        "volume": "vol. 202",
+        "number": None,
+        "pages": 14,
         "month": 11,
         "note": "my favorite article"
     }
@@ -80,14 +83,13 @@ def create_mock_data(connection):
     reference2 = {
         "citekey": "cormen02",
         "author": "Cormen et. al.",
-        "title": "Data Structures and Algorithms v.2",
-        "journal": "Fantastic Algorithms",
-        "year": 2001,
-        "volume_or_number": "vol. 203",
-        "series": None,
-        "address": "https://cormen.com",
-        "edition": None,
-        "month": 12,
+        "title": "Data Structures and Algorithms v2.",
+        "journal": "Fantastic Algorithms vol II",
+        "year": 2014,
+        "volume": "vol. 232",
+        "number": None,
+        "pages": 214,
+        "month": 2,
         "note": "my 2nd favorite article"
     }
 
@@ -97,10 +99,9 @@ def create_mock_data(connection):
         "title": "Agile is hip",
         "journal": "Agile-fans",
         "year": 2011,
-        "volume_or_number": None,
-        "series": None,
-        "address": "https://uncle-bob.com",
-        "edition": None,
+        "volume": None,
+        "number": None,
+        "pages": 11,
         "month": 1,
         "note": "Controversial stuff"
     }
@@ -117,10 +118,9 @@ def create_mock_data(connection):
                 title,
                 journal,
                 year,
-                volume_or_number,
-                series,
-                address,
-                edition,
+                volume,
+                number,
+                pages,
                 month,
                 note)
                 VALUES (?,?,?,?,?,?,?,?,?,?,?)''',
@@ -129,10 +129,9 @@ def create_mock_data(connection):
                         reference["title"],
                         reference["journal"],
                         reference["year"],
-                        reference["volume_or_number"],
-                        reference["series"],
-                        reference["address"],
-                        reference["edition"],
+                        reference["volume"],
+                        reference["number"],
+                        reference["pages"],
                         reference["month"],
                         reference["note"]]
                        )

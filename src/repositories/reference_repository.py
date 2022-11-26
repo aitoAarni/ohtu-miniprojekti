@@ -18,10 +18,9 @@ class ReferenceRepository:
                 title,
                 journal,
                 year,
-                volume_or_number,
-                series,
-                address,
-                edition,
+                volume,
+                number, 
+                pages,
                 month,
                 note FROM REFERENCE''')
 
@@ -33,16 +32,15 @@ class ReferenceRepository:
                 str(row["title"]),
                 str(row["journal"]),
                 str(row["year"]),
-                str(row["volume_or_number"]),
-                str(row["series"]),
-                str(row["address"]),
-                str(row["edition"]),
+                str(row["volume"]),
+                str(row["number"]),
+                str(row["pages"]),
                 str(row["month"]),
                 str(row["note"]),
             ))
         return all_data
 
-    def add_reference(self, reference_object: Reference):
+    def add_article_reference(self, reference_object: Reference):
         cursor = self._connection.cursor()
 
         reference = reference_object.data()
@@ -54,10 +52,9 @@ class ReferenceRepository:
                 title,
                 journal,
                 year,
-                volume_or_number,
-                series,
-                address,
-                edition,
+                volume,
+                number, 
+                pages,
                 month,
                 note)
                 VALUES (?,?,?,?,?,?,?,?,?,?,?)''',
@@ -66,10 +63,9 @@ class ReferenceRepository:
                         reference["title"],
                         reference["journal"],
                         reference["year"],
-                        reference["volume_or_number"],
-                        reference["series"],
-                        reference["address"],
-                        reference["edition"],
+                        reference["volume"],
+                        reference["number"],
+                        reference["pages"],
                         reference["month"],
                         reference["note"]]
                        )
