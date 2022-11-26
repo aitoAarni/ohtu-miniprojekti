@@ -123,7 +123,7 @@ def create_mock_data(connection):
                 pages,
                 month,
                 note)
-                VALUES (?,?,?,?,?,?,?,?,?,?,?)''',
+                VALUES (?,?,?,?,?,?,?,?,?,?)''',
                        [reference["citekey"],
                         reference["author"],
                         reference["title"],
