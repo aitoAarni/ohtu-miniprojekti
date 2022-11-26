@@ -40,7 +40,7 @@ class ReferenceRepository:
             ))
         return all_data
 
-    def add_article_reference(self, reference_object: Reference):
+    def add_reference(self, reference_object: Reference):
         cursor = self._connection.cursor()
 
         reference = reference_object.fields
@@ -50,22 +50,32 @@ class ReferenceRepository:
                 (citekey,
                 author,
                 title,
+                publisher,
                 journal,
                 year,
+                volume_or_number,
                 volume,
                 number, 
                 pages,
+                series,
+                address,
+                edition,
                 month,
                 note)
-                VALUES (?,?,?,?,?,?,?,?,?,?)''',
+                VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)''',
                        [reference.get("citekey"),
                         reference.get("author"),
                         reference.get("title"),
+                        reference.get("publisher"),
                         reference.get("journal"),
                         reference.get("year"),
                         reference.get("volume"),
+                        reference.get("volume_or_number"),
                         reference.get("number"),
                         reference.get("pages"),
+                        reference.get("series"),
+                        reference.get("edition"),
+                        reference.get("address"),
                         reference.get("month"),
                         reference.get("note")
                         ]

@@ -25,6 +25,6 @@ class TestReferenceRepository(unittest.TestCase):
             "volume": "22",
             "pages": 1
         }
-        self.reference_repository.add_article_reference(reference)
+        self.reference_repository.add_reference(reference)
         result = self.reference_repository.get_all()
         self.assertEqual(4, len(result))
