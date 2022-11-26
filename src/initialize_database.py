@@ -124,16 +124,16 @@ def create_mock_data(connection):
                 month,
                 note)
                 VALUES (?,?,?,?,?,?,?,?,?,?)''',
-                       [reference["citekey"],
-                        reference["author"],
-                        reference["title"],
-                        reference["journal"],
-                        reference["year"],
-                        reference["volume"],
-                        reference["number"],
-                        reference["pages"],
-                        reference["month"],
-                        reference["note"]]
+                       [reference.get("citekey"),
+                        reference.get("author"),
+                        reference.get("title"),
+                        reference.get("journal"),
+                        reference.get("year"),
+                        reference.get("volume"),
+                        reference.get("number"),
+                        reference.get("pages"),
+                        reference.get("month"),
+                        reference.get("note")]
                        )
 
         connection.commit()
