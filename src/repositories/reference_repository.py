@@ -57,7 +57,7 @@ class ReferenceRepository:
                 pages,
                 month,
                 note)
-                VALUES (?,?,?,?,?,?,?,?,?,?,?)''',
+                VALUES (?,?,?,?,?,?,?,?,?,?)''',
                        [reference.get("citekey"),
                         reference.get("author"),
                         reference.get("title"),
@@ -70,6 +70,8 @@ class ReferenceRepository:
                         reference.get("note")
                         ]
                        )
+
+        self._connection.commit()
 
 
 default_reference_repository = ReferenceRepository(get_database_connection())
