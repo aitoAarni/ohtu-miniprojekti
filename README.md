@@ -15,6 +15,14 @@ poetry install
 poetry run invoke build
 ```
 
+## Sovelluksen käynnistäminen
+
+Käynnistä sovellus komennolla
+
+```
+poetry run invoke start
+```
+
 ## Sovelluksen rakenne
 
 Paketoidaan sovelluksen toimintalogiikka
