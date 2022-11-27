@@ -1,6 +1,7 @@
 # ohtu-miniprojekti
 
 ![workflow](https://github.com/aitoAarni/ohtu-miniprojekti/actions/workflows/main.yml/badge.svg)
+[![codecov](https://codecov.io/gh/aitoAarni/ohtu-miniprojekti/branch/main/graph/badge.svg?token=Y13KH8K0M0)](https://codecov.io/gh/aitoAarni/ohtu-miniprojekti)
 
 ## Sovelluksen rakenne
 Paketoidaan sovelluksen toimintalogiikka
