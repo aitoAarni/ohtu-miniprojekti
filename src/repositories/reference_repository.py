@@ -85,13 +85,15 @@ class ReferenceRepository:
 
     def citekey_is_available(self, citekey: str):
         cursor = self._connection.cursor()
-        result = cursor.execute('''
-            SELECT COUNT(*)
+        cursor.execute('''
+            SELECT *
             FROM REFERENCE
             WHERE citekey=?
         ''', [citekey])
 
-        return bool(result == 0)
+        result = cursor.fetchone()
+
+        return bool(not result)
 
 
 default_reference_repository = ReferenceRepository(get_database_connection())

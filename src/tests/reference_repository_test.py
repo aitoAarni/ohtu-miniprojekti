@@ -28,3 +28,11 @@ class TestReferenceRepository(unittest.TestCase):
         self.reference_repository.add_reference(reference)
         result = self.reference_repository.get_all()
         self.assertEqual(4, len(result))
+
+    def test_citekey_is_not_available_returns_false(self):
+        result = self.reference_repository.citekey_is_available('martin01')
+        self.assertEqual(result, False)
+
+    def test_citekey_is_available_returns_true(self):
+        result = self.reference_repository.citekey_is_available('martin02')
+        self.assertEqual(result, True)
