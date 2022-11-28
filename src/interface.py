@@ -15,28 +15,17 @@ class Interface:
 
     def command_selector(self, command):
         if command == "new":
-            return self.new_reference()
+            fields_dict = self.new_reference()
+            self.reference_service.save_reference(fields_dict)
         elif command == "list":
          #   print("Not implemented yet")
             return self.reference_service.list_references()
 
     def new_reference(self):
-        citekey = input("\t Enter citekey: ")
-        author = input("\t Enter author: ")
-        title = input("\t Enter title: ")
-        journal = input("\t Enter journal: ")
-        year = input("\t Enter year: ")
-        volume = input("\t Enter volume: ")
-        pages = input("\t Enter pages: ")
+        fields_dict = self.reference_service.get_template_reference()
 
-        fields_dict = {
-            "citekey": citekey,
-            "author": author,
-            "title": title,
-            "journal": journal,
-            "year": int(year),
-            "volume": volume,
-            "pages": pages
-        }
+        for field in fields_dict:
+            user_input = input(f"\t Enter {field}: ")
+            fields_dict[field] = user_input
 
         return fields_dict
