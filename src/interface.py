@@ -1,4 +1,3 @@
-from repositories.reference_repository import default_reference_repository
 
 class Interface:
     def __init__(self, reference_service):
@@ -19,7 +18,7 @@ class Interface:
             return self.new_reference()
         elif command == "list":
          #   print("Not implemented yet")
-            return self.list_references()
+            return self.reference_service.list_references()
 
     def new_reference(self):
         citekey = input("\t Enter citekey: ")
@@ -41,9 +40,3 @@ class Interface:
         }
 
         return fields_dict
-
-    def list_references(self):
-        references = default_reference_repository.get_all()
-
-        for reference in references:
-            print(reference)
