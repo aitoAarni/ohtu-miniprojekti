@@ -10,6 +10,7 @@ class ReferenceRepository:
 
     def get_all(self):
         all_data = []
+
         cursor = self._connection.cursor()
 
         cursor.execute('''SELECT 
@@ -31,23 +32,8 @@ class ReferenceRepository:
 
         rows = cursor.fetchall()
         for row in rows:
-            all_data.append((
-                str(row["citekey"]),
-                str(row["author"]),
-                str(row["title"]),
-                str(row["publisher"]),
-                str(row["journal"]),
-                str(row["year"]),
-                str(row["volume_or_number"]),
-                str(row["volume"]),
-                str(row["number"]),
-                str(row["pages"]),
-                str(row["series"]),
-                str(row["address"]),
-                str(row["edition"]),
-                str(row["month"]),
-                str(row["note"]),
-            ))
+            all_data.append(dict(zip(row.keys(), row)))
+
         return all_data
 
     def add_reference(self, reference_object: Reference):
