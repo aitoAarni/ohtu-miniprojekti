@@ -15,4 +15,6 @@ class ReferenceService:
         references = default_reference_repository.get_all()
 
         for reference in references:
-            print(reference)
+            for key, value in reference.items():
+                print(f"{key}: {value}")
+            print()
