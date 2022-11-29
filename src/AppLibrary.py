@@ -30,3 +30,6 @@ class AppLibrary:
         for test_input in self._stub_io.added:
             if test_input not in references.values():
                 raise AssertionError(f"test input {test_input}  is not in references {references}")
+
+    def view_all_references(self):
+        self._interface.reference_service.get_all_references()

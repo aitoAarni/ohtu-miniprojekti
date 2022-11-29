@@ -8,8 +8,6 @@ Input Commands
 Clear Inputs
     Clear Inputs
 
-
-
 Choose Operation
     [Arguments]  ${operation}
     Add Input  ${operation}
