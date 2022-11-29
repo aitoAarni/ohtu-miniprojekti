@@ -34,9 +34,11 @@ class TestReferenceService(unittest.TestCase):
         self.assertEqual(self.reference_service.reference.fields['title'], reference_correct_fields['title'])
 
 
-    def test_get_all_references(self):
+    def test_get_all_references_right_citekeys(self):
         references = self.reference_service.get_all_references()
+        references_citekeys = references[0]['citekey'], references[1]['citekey'], references[2]['citekey']
+        citekeys = "cormen01", "cormen02", "martin01"
 
-        self.assertEqual(len(references), 3)
+        self.assertEqual(references_citekeys, citekeys)
 
 
