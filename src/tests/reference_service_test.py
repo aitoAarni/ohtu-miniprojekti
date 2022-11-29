@@ -32,3 +32,11 @@ class TestReferenceService(unittest.TestCase):
         self.reference_service.save_reference({'title': 'test'})
 
         self.assertEqual(self.reference_service.reference.fields['title'], reference_correct_fields['title'])
+
+
+    def test_get_all_references(self):
+        references = self.reference_service.get_all_references()
+
+        self.assertEqual(len(references), 3)
+
+
