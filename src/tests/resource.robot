@@ -9,6 +9,7 @@ Clear Inputs
     Clear Inputs
 
 
-Print Debugger
-    [Arguments]  ${message}
-    Print Message  ${message}
+
+Choose Operation
+    [Arguments]  ${operation}
+    Add Input  ${operation}

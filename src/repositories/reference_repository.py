@@ -78,6 +78,10 @@ class ReferenceRepository:
                        )
 
         self._connection.commit()
+    
+    def delete_all(self):
+        cursor = self._connection.cursor()
+        cursor.execute('DELETE FROM REFERENCE')
 
     def citekey_is_available(self, citekey: str):
         cursor = self._connection.cursor()

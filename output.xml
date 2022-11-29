@@ -1,64 +1,64 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generator="Robot 6.0.1 (Python 3.8.10 on linux)" generated="20221129 13:41:52.065" rpa="false" schemaversion="3">
+<robot generator="Robot 6.0.1 (Python 3.8.10 on linux)" generated="20221129 15:11:58.521" rpa="false" schemaversion="3">
 <suite id="s1" name="Tests" source="/home/aare/ohtu-proju/ohtu-miniprojekti/src/tests">
 <suite id="s1-s1" name="Add Reference" source="/home/aare/ohtu-proju/ohtu-miniprojekti/src/tests/add_reference.robot">
-<test id="s1-s1-t1" name="Add Reference" line="7">
-<kw name="Clear Database And Inputs" type="SETUP">
-<kw name="Initialize Test" library="AppLibrary">
-<msg timestamp="20221129 13:41:52.083" level="INFO">testi 123
-database referenssit [{'citekey': 'cormen01', 'author': 'Cormen et. al.', 'title': 'Data Structures and Algorithms', 'publisher': None, 'journal': 'Fantastic Algorithms', 'year': 2000, 'volume_or_number': None, 'volume': 'vol. 202', 'number': None, 'pages': 14, 'series': None, 'address': None, 'edition': None, 'month': 11, 'note': 'my favorite article'}, {'citekey': 'cormen02', 'author': 'Cormen et. al.', 'title': 'Data Structures and Algorithms v2.', 'publisher': None, 'journal': 'Fantastic Algorithms vol II', 'year': 2014, 'volume_or_number': None, 'volume': 'vol. 232', 'number': None, 'pages': 214, 'series': None, 'address': None, 'edition': None, 'month': 2, 'note': 'my 2nd favorite article'}, {'citekey': 'martin01', 'author': 'Uncle Bob', 'title': 'Agile is hip', 'publisher': None, 'journal': 'Agile-fans', 'year': 2011, 'volume_or_number': None, 'volume': None, 'number': None, 'pages': 11, 'series': None, 'address': None, 'edition': None, 'month': 1, 'note': 'Controversial stuff'}, {'citekey': None, 'author': None, 'title': 'test', 'publisher': None, 'journal': None, 'year': None, 'volume_or_number': None, 'volume': None, 'number': None, 'pages': None, 'series': None, 'address': None, 'edition': None, 'month': None, 'note': None}]</msg>
-<status status="PASS" starttime="20221129 13:41:52.082" endtime="20221129 13:41:52.083"/>
+<test id="s1-s1-t1" name="Add Reference" line="6">
+<kw name="Delete Records From Database" library="AppLibrary" type="SETUP">
+<status status="PASS" starttime="20221129 15:11:58.538" endtime="20221129 15:11:58.539"/>
 </kw>
-<status status="PASS" starttime="20221129 13:41:52.082" endtime="20221129 13:41:52.083"/>
-</kw>
-<kw name="Print Debugger" library="resource">
-<arg>1</arg>
-<kw name="Print Message" library="AppLibrary">
-<arg>${message}</arg>
-<msg timestamp="20221129 13:41:52.083" level="INFO">1</msg>
-<status status="PASS" starttime="20221129 13:41:52.083" endtime="20221129 13:41:52.083"/>
-</kw>
-<status status="PASS" starttime="20221129 13:41:52.083" endtime="20221129 13:41:52.083"/>
-</kw>
-<kw name="Choose Operation">
+<kw name="Choose Operation" library="resource">
 <arg>new</arg>
-<kw name="Input" library="AppLibrary">
+<kw name="Add Input" library="AppLibrary">
 <arg>${operation}</arg>
-<status status="PASS" starttime="20221129 13:41:52.083" endtime="20221129 13:41:52.084"/>
+<status status="PASS" starttime="20221129 15:11:58.539" endtime="20221129 15:11:58.539"/>
 </kw>
-<status status="PASS" starttime="20221129 13:41:52.083" endtime="20221129 13:41:52.084"/>
+<status status="PASS" starttime="20221129 15:11:58.539" endtime="20221129 15:11:58.539"/>
 </kw>
-<kw name="Input" library="AppLibrary">
+<kw name="Add Reference Field">
 <arg>citekey</arg>
-<status status="PASS" starttime="20221129 13:41:52.084" endtime="20221129 13:41:52.084"/>
+<kw name="Add Reference Input" library="AppLibrary">
+<arg>${argument}</arg>
+<status status="PASS" starttime="20221129 15:11:58.539" endtime="20221129 15:11:58.539"/>
 </kw>
-<kw name="Input" library="AppLibrary">
-<arg>author</arg>
-<status status="PASS" starttime="20221129 13:41:52.084" endtime="20221129 13:41:52.084"/>
+<status status="PASS" starttime="20221129 15:11:58.539" endtime="20221129 15:11:58.540"/>
 </kw>
-<kw name="Input" library="AppLibrary">
-<arg>title</arg>
-<status status="PASS" starttime="20221129 13:41:52.084" endtime="20221129 13:41:52.084"/>
+<kw name="Add Reference Field">
+<arg>author1</arg>
+<kw name="Add Reference Input" library="AppLibrary">
+<arg>${argument}</arg>
+<status status="PASS" starttime="20221129 15:11:58.540" endtime="20221129 15:11:58.540"/>
+</kw>
+<status status="PASS" starttime="20221129 15:11:58.540" endtime="20221129 15:11:58.540"/>
+</kw>
+<kw name="Add Reference Field">
+<arg>title1</arg>
+<kw name="Add Reference Input" library="AppLibrary">
+<arg>${argument}</arg>
+<status status="PASS" starttime="20221129 15:11:58.540" endtime="20221129 15:11:58.540"/>
+</kw>
+<status status="PASS" starttime="20221129 15:11:58.540" endtime="20221129 15:11:58.540"/>
 </kw>
 <kw name="Run Application" library="AppLibrary">
-<msg timestamp="20221129 13:41:52.084" level="FAIL">TypeError: input_reference() takes 1 positional argument but 2 were given</msg>
-<status status="FAIL" starttime="20221129 13:41:52.084" endtime="20221129 13:41:52.084"/>
+<status status="PASS" starttime="20221129 15:11:58.540" endtime="20221129 15:11:58.543"/>
 </kw>
-<status status="FAIL" starttime="20221129 13:41:52.082" endtime="20221129 13:41:52.084">TypeError: input_reference() takes 1 positional argument but 2 were given</status>
+<kw name="Output Should Contain" library="AppLibrary">
+<status status="PASS" starttime="20221129 15:11:58.544" endtime="20221129 15:11:58.544"/>
+</kw>
+<status status="PASS" starttime="20221129 15:11:58.538" endtime="20221129 15:11:58.544"/>
 </test>
-<status status="FAIL" starttime="20221129 13:41:52.076" endtime="20221129 13:41:52.085"/>
+<status status="PASS" starttime="20221129 15:11:58.532" endtime="20221129 15:11:58.544"/>
 </suite>
-<status status="FAIL" starttime="20221129 13:41:52.066" endtime="20221129 13:41:52.085"/>
+<status status="PASS" starttime="20221129 15:11:58.522" endtime="20221129 15:11:58.545"/>
 </suite>
 <statistics>
 <total>
-<stat pass="0" fail="1" skip="0">All Tests</stat>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
 </total>
 <tag>
 </tag>
 <suite>
-<stat pass="0" fail="1" skip="0" id="s1" name="Tests">Tests</stat>
-<stat pass="0" fail="1" skip="0" id="s1-s1" name="Add Reference">Tests.Add Reference</stat>
+<stat pass="1" fail="0" skip="0" id="s1" name="Tests">Tests</stat>
+<stat pass="1" fail="0" skip="0" id="s1-s1" name="Add Reference">Tests.Add Reference</stat>
 </suite>
 </statistics>
 <errors>
