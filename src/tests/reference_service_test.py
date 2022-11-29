@@ -13,7 +13,7 @@ class TestReferenceService(unittest.TestCase):
         reference_correct_fields = {
             'address': None,
             'author': None,
-            'citekey': None,
+            'citekey': 'citekey1',
             'edition': None,
             'journal': None,
             'month': None,
@@ -29,10 +29,25 @@ class TestReferenceService(unittest.TestCase):
         }
 
         self.reference_service.get_template_reference()
-        self.reference_service.save_reference({'title': 'test'})
+        self.reference_service.save_reference({'title': 'test', 'citekey': 'citekey1'})
 
         self.assertEqual(self.reference_service.reference.fields['title'], reference_correct_fields['title'])
 
+    def test_save_reference_returns_false_when_citekey_taken(self):
+        self.reference_service.get_template_reference()
+        result = self.reference_service.save_reference({'citekey': 'cormen01'})
+
+        self.assertEqual(result, False)
+
+    def test_check_data_validity_returns_false_when_no_citekey(self):
+        result = self.reference_service.check_data_validity({'citekey': None, 'author': 'me'})
+
+        self.assertEqual(result, False)
+
+    def test_check_data_validity_returns_false_when_citekey_taken(self):
+        result = self.reference_service.check_data_validity({'citekey': 'cormen01', 'author': 'me'})
+
+        self.assertEqual(result, False)
 
     def test_get_all_references_right_citekeys(self):
         references = self.reference_service.get_all_references()

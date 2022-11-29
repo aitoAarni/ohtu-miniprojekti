@@ -19,7 +19,8 @@ class Interface:
     def command_selector(self, command):
         if command == "new":
             fields_dict = self.new_reference()
-            self.reference_service.save_reference(fields_dict)
+            if not self.reference_service.save_reference(fields_dict):
+                self.user_io.output_reference("There was an error in data fields and reference was not saved. (Did you add a unique citekey?)")
         elif command == "list":
             self.list_references()
 
