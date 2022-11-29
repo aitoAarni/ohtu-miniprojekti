@@ -1,23 +1,20 @@
 *** Settings ***
 Resource  resource.robot
-Test Setup  Clear Database And Inputs
-
+Test Setup  Delete Records From Database
 
 *** Test Cases ***
 Add Reference
-    Print Debugger  1
     Choose Operation  new
-    Input  citekey
-    Input  author
-    Input  title
+    Add Reference Field  citekey
+    Add Reference Field  author1
+    Add Reference Field  title1
     Run Application
-
+    Output Should Contain    
 
 *** Keywords ***
-Choose Operation
-    [Arguments]  ${operation}
-    Input  ${operation}
 
-Clear Database And Inputs
-    Initialize Test
+Add Reference Field
+    [Arguments]  ${argument}
+    Add Reference Input  ${argument}
+
 
