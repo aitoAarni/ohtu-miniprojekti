@@ -12,7 +12,7 @@ class ReferenceRepository:
 
         cursor = self._connection.cursor()
 
-        cursor.execute('''SELECT 
+        cursor.execute('''SELECT
                 citekey,
                 author,
                 title,

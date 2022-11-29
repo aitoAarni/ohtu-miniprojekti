@@ -5,6 +5,7 @@ disable=
     C0116, # missing-function-docstring
     R0903, # too-few-public-methods
     C0103, # invalid-name
+    W0613, # unused-argument
 
 [FORMAT]
 max-line-length=150
