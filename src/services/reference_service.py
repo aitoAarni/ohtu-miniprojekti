@@ -3,7 +3,8 @@ from entities.reference import Reference
 class ReferenceService:
     def __init__(self, reference_repository):
         self.reference_repository = reference_repository
-    
+        self.reference = None
+
     def get_template_reference(self):
         self.reference = Reference()
         return self.reference.fields

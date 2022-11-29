@@ -6,7 +6,6 @@ class ReferenceRepository:
 
     def __init__(self, connection=get_database_connection()):
         self._connection = connection
-        pass
 
     def get_all(self):
         all_data = []

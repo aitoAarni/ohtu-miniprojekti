@@ -3,8 +3,6 @@ from interface import Interface
 from services.reference_service import ReferenceService
 from repositories.reference_repository import default_reference_repository
 
-
-
 class AppLibrary:
     def __init__(self) -> None:
         self._reference_service = ReferenceService(default_reference_repository)
@@ -14,8 +12,6 @@ class AppLibrary:
 
     def input(self, value):
         self._stub_io.add_input(value)
-
-
 
     def run_application(self):
         self._interface.start()
