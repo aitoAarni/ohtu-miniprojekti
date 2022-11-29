@@ -31,6 +31,11 @@ Paketoidaan sovelluksen toimintalogiikka
 - Sovelluslogiikka
 - repositoriosta huolehtiva koodi
 
+## Dokumentaatio
+
+[Sovelluksen arkkitehtuuri](/documentation/architecture.md)
+[Käyttöohje](/documentation/operation-manual.md)
+
 ## Linkit
 
 [Structured Backlog](https://docs.google.com/spreadsheets/d/1XYFtrZ4NT5crDIYqlv-1CX1kRro6Nn1QrsbifLbLkDY/edit?usp=sharing)
