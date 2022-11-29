@@ -27,9 +27,5 @@ jobs:
         run: poetry run coverage xml
       - name: Coverage report to Codecov
         run: bash <(curl -s https://codecov.io/bash)
-      - name: Execute robot tests
-        uses: joonvena/robotframework-docker-action@v1.0
-      - name: Upload test results
-        uses: actions/upload-artifact@v1
       - name: run pylint
         run: poetry run pylint src
