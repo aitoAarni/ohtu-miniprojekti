@@ -11,7 +11,7 @@ class Interface:
 
             if command == "exit":
                 self.user_io.output_reference("Exit selected, goodbye")
-                break
+                return "Exit selected, goodbye"
 
             print("")
             self.command_selector(command)
@@ -20,7 +20,8 @@ class Interface:
         if command == "new":
             fields_dict = self.new_reference()
             if not self.reference_service.save_reference(fields_dict):
-                self.user_io.output_reference("There was an error in data fields and reference was not saved. (Did you add a unique citekey?)")
+                self.user_io.output_reference(
+                    "There was an error in data fields and reference was not saved. (Did you add a unique citekey?)")
         elif command == "list":
             self.list_references()
 
@@ -38,6 +39,8 @@ class Interface:
 
         for reference in references:
             self.print_reference_objects(reference)
+
+        return references
 
     def print_reference_objects(self, reference):
         last_key = list(reference.keys())[-1]
