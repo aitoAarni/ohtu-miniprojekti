@@ -4,11 +4,15 @@ class StubIO:
         self.outputs = []
 
 
-    def output_reference(self):
+    def input_reference(self):
         if len(self.inputs) > 0:
             return self.inputs.pop(0)
         else:
             return ""
+
+    def output_reference(self, output):
+        self.outputs.append(output)
+
 
     def add_input(self, value):
         self.inputs.append(value)

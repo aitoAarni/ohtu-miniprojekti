@@ -7,4 +7,6 @@ Input Commands
 
 Clear Inputs
     Clear Inputs
-    
+
+Run Application
+    Run Application

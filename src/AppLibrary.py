@@ -10,6 +10,7 @@ class AppLibrary:
         self._reference_service = ReferenceService(default_reference_repository)
         self._stub_io = StubIO()
         self._interface = Interface(self._reference_service, self._stub_io)
+        self.test_inputs = []
 
     def input(self, value):
         self._stub_io.add_input(value)
@@ -21,4 +22,9 @@ class AppLibrary:
     def clear_inputs(self):
         self._stub_io.clear_inputs()
 
-    
+    def initialize_test(self):
+        self.test_inputs.clear()
+        # clear database
+
+    def database_should_contain_right_reference(self):
+        pass
