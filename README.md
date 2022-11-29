@@ -33,7 +33,7 @@ Paketoidaan sovelluksen toimintalogiikka
 
 ## Dokumentaatio
 
-[Sovelluksen arkkitehtuuri](/documentation/architecture.md)
+[Sovelluksen arkkitehtuuri](/documentation/architecture.md)  
 [Käyttöohje](/documentation/operation-manual.md)
 
 ## Linkit
