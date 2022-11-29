@@ -1,10 +1,11 @@
 *** Settings ***
-Resource resource.robot
+Resource  resource.robot
 Test Setup  Clear Database And Inputs
 
 
 *** Test Cases ***
 Add Reference
+    Print Debugger  1
     Choose Operation  new
     Input  citekey
     Input  author

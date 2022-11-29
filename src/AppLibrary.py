@@ -16,6 +16,7 @@ class AppLibrary:
         self._stub_io.add_input(value)
 
 
+
     def run_application(self):
         self._interface.start()
 
@@ -23,8 +24,12 @@ class AppLibrary:
         self._stub_io.clear_inputs()
 
     def initialize_test(self):
+        print("testi 123")
         self.test_inputs.clear()
-        # clear database
+        print("database referenssit", self._reference_service.get_all_references())
 
     def database_should_contain_right_reference(self):
         pass
+
+    def print_message(self, msg):
+        print(msg)

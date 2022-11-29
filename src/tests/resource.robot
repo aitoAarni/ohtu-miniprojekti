@@ -8,5 +8,7 @@ Input Commands
 Clear Inputs
     Clear Inputs
 
-Run Application
-    Run Application
+
+Print Debugger
+    [Arguments]  ${message}
+    Print Message  ${message}
