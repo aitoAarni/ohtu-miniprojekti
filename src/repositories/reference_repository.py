@@ -95,13 +95,13 @@ class ReferenceRepository:
         return bool(not result)
 
     def fetch_selected_references_data_fields(self, citekey: str) -> dict:
-        """Returns a dictionary containing the data fields of the selected reference. If citekey is invalid, an empty dictionary is returned. 
+        """Returns a dictionary containing the data fields of the selected reference. If citekey is invalid, an empty dictionary is returned.
 
         Args:
             citekey (str): citekey of the reference
 
         Returns:
-            dict: contains the datafields of the requested reference. If no reference is found, an empty dictionary is returned. 
+            dict: contains the datafields of the requested reference. If no reference is found, an empty dictionary is returned.
         """
         cursor = self._connection.cursor()
         cursor.execute('''

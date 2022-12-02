@@ -1,24 +1,24 @@
-from config import EXPORT_PATH
 import os
-from entities.reference import Reference
+from config import EXPORT_PATH
 
 
 class BibExport:
 
     def __init__(self, filename='export.bib'):
-        """A constructor for the class. 
+        """A constructor for the class.
 
         Args:
-            filename (str, optional): A user given filename. Please note that filename should contain .bib extension. This is not validated in this class. Defaults to 'export.bib'.
+            filename (str, optional): A user given filename. Please note that filename should contain .bib extension.
+            This is not validated in this class. Defaults to 'export.bib'.
         """
         self.directory = EXPORT_PATH
         self.filename = filename
 
     def write_document(self, content: str):
-        """Writes content to given filename. Please note that mode is set to write, which overwrites file, if file already exists. 
+        """Writes content to given filename. Please note that mode is set to write, which overwrites file, if file already exists.
 
         Args:
-            content (str): bibtext-references as a string. 
+            content (str): bibtext-references as a string.
         """
         file_and_directory = os.path.join(self.directory, self.filename)
         with open(file_and_directory, "w", encoding="utf-8") as file:
