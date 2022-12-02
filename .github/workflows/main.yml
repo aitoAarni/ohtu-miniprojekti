@@ -30,5 +30,5 @@ jobs:
       - name: run pylint
         run: poetry run pylint src
       - name: Run robot tests
-        run: bash run_robot_tests.sh
+        run: run robot src/tests
 
