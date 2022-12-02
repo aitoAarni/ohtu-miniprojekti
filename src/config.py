@@ -3,6 +3,15 @@ from dotenv import load_dotenv
 
 dirname = os.path.dirname(__file__)
 
+
+path = os.getenv("DEFAULT_EXPORT_PATH") or "saved_exports"
+
+EXPORT_PATH = os.path.join(dirname, '..', path)
+
+if not os.path.exists(EXPORT_PATH):
+    os.makedirs(EXPORT_PATH)
+
+
 try:
     load_dotenv(dotenv_path=os.path.join(dirname, '..', '.env'))
 except FileNotFoundError:
