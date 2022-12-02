@@ -4,7 +4,7 @@
 poetry run python3 src/index.py &
 
 # suoritetaan testit
-poetry run robot src/e2e
+poetry run robot src/tests
 
 status=$?
 
