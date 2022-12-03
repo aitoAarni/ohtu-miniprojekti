@@ -20,3 +20,10 @@ class Reference:
             "month": None,
             "note": None
         }
+        self._required_fields = []
+
+    def get_required_fields (self):
+        return self._required_fields
+
+    def get_fields(self):
+        return self.fields
