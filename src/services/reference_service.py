@@ -1,9 +1,12 @@
+import os
 from entities.reference import Reference
+from config import EXPORT_PATH
 
 class ReferenceService:
     def __init__(self, reference_repository):
         self.reference_repository = reference_repository
         self.reference = None
+        self.export_directory = EXPORT_PATH
 
     def get_template_reference(self):
         self.reference = Reference()
@@ -41,3 +44,20 @@ class ReferenceService:
                     return 'Only digits allowed'
 
         return True
+
+    def check_bib_name_validity(self, name):
+        if not name:
+            return 'Input required'
+
+        for char in name:
+            if char == ' ':
+                return 'Spaces not allowed, use "_"'
+
+        path = f'{self.export_directory}/{name}.bib'
+        if os.path.exists(path):
+            return 'Name taken'
+
+        return True
+
+    def create_bib(self, name):#kesken
+        pass

@@ -32,8 +32,8 @@ class BibExport:
         """
         output = ""
         for reference in references:
-            bib_reference = "@article{" + reference.fields["citekey"] + ",\n"
-            for key, item in reference.fields.items():
+            bib_reference = "@article{" + reference.get_fields()["citekey"] + ",\n"
+            for key, item in reference.get_fields().items():
                 if key == "citekey":
                     continue
                 if item:

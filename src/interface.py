@@ -7,7 +7,7 @@ class Interface:
     def start(self):
         while True:
             command = self.user_io.input_reference(
-                "Enter command: (new, list, exit): ").lower()
+                "Enter command: (new, list, export, exit): ").lower()
 
             if command == "exit":
                 self.user_io.output_reference("Exit selected, goodbye")
@@ -22,6 +22,9 @@ class Interface:
             self.reference_service.save_reference(fields_dict)
         elif command == "list":
             self.list_references()
+        elif command == "export":
+            file_name = self.create_name_for_bib()
+            self.reference_service.create_bib(file_name)
 
     def new_reference(self):
         fields_dict = self.reference_service.get_template_reference()
@@ -56,6 +59,16 @@ class Interface:
             if key == "citekey":
                 self.user_io.output_reference(f"{key} {value}")
             elif key == last_key:
-                self.user_io.output_reference(f"  └── {key}: {value} \n")
+                self.user_io.output_reference(f"  └── {key}: {value}")
             else:
                 self.user_io.output_reference(f"  ├── {key}: {value}")
+        self.user_io.output_reference("\n")
+
+    def create_name_for_bib(self):
+        user_input = self.user_io.input_reference("\t Enter a name for your bib file: ")
+        validity = self.reference_service.check_bib_name_validity(user_input)
+        while validity is not True:
+            self.user_io.output_reference(validity)
+            user_input = self.user_io.input_reference("\t Enter a name for your bib file: ")
+            validity = self.reference_service.check_bib_name_validity(user_input)
+        return user_input
