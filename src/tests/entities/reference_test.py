@@ -6,4 +6,4 @@ class TestReference(unittest.TestCase):
         self.reference = Reference()
 
     def test_constructor_works_properly(self):
-        self.assertTrue(isinstance(self.reference.fields, dict))
+        self.assertTrue(isinstance(self.reference.get_fields(), dict))

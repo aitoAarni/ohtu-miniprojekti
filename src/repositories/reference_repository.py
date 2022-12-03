@@ -38,7 +38,7 @@ class ReferenceRepository:
     def add_reference(self, reference_object: Reference):
         cursor = self._connection.cursor()
 
-        reference = reference_object.fields
+        reference = reference_object.get_fields()
 
         cursor.execute('''
             INSERT INTO REFERENCE
@@ -132,7 +132,7 @@ class ReferenceRepository:
         return ""
 
     def edit_selected_reference(self, reference: Reference):
-        citekey = reference.fields["citekey"] or ""
+        citekey = reference.get_fields()["citekey"] or ""
         if self.citekey_is_available(citekey):
             return
         self.delete_selected_reference(citekey)

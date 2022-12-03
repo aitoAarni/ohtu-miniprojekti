@@ -23,4 +23,8 @@ class Reference:
         return self._required_fields
 
     def get_fields(self):
-        return self.fields
+        return self._fields
+
+    def edit(self, key, value):
+        if key in self._fields:
+            self._fields[key] = value

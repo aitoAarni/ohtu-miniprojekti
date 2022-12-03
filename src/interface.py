@@ -19,17 +19,21 @@ class Interface:
     def command_selector(self, command):
         if command == "new":
             fields_dict = self.new_reference()
-            if not self.reference_service.save_reference(fields_dict):
-                self.user_io.output_reference(
-                    "There was an error in data fields and reference was not saved. (Did you add a unique citekey?)")
+            self.reference_service.save_reference(fields_dict)
         elif command == "list":
             self.list_references()
 
     def new_reference(self):
         fields_dict = self.reference_service.get_template_reference()
+        required_fields_list = self.reference_service.get_required_fields()
 
-        for field in fields_dict:
+        for field in required_fields_list:
             user_input = self.user_io.input_reference(f"\t Enter {field}: ")
+            validity = self.reference_service.check_data_validity(field, user_input)
+            while validity is not True:
+                self.user_io.output_reference(validity)
+                user_input = self.user_io.input_reference(f"\t Enter {field}: ")
+                validity = self.reference_service.check_data_validity(field, user_input)
             fields_dict[field] = user_input
 
         return fields_dict
