@@ -19,12 +19,12 @@ class Reference:
         }
         self._required_fields = ["citekey", "author", "title", "journal", "year"]
 
-    def get_required_fields (self):
+    def get_required_fields (self) -> list:
         return self._required_fields
 
-    def get_fields(self):
+    def get_fields(self) -> dict:
         return self._fields
 
-    def edit(self, key, value):
+    def set_field(self, key: str, value: str):
         if key in self._fields:
             self._fields[key] = value

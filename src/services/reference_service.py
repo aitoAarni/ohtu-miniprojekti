@@ -14,7 +14,7 @@ class ReferenceService:
 
     def save_reference(self, fields_dict :dict):
         for key, value in fields_dict.items():
-            self.reference.edit(key, value)
+            self.reference.set_field(key, value)
         self.reference_repository.add_reference(self.reference)
 
     def get_all_references(self):
