@@ -3,7 +3,7 @@
 class Reference:
     
     def __init__(self):
-        self.fields = {
+        self._fields = {
             "citekey": None,
             "author": None,
             "title": None,
@@ -20,7 +20,7 @@ class Reference:
             "month": None,
             "note": None
         }
-        self._required_fields = []
+        self._required_fields = ["citekey", "author", "title", "journal", "year"]
 
     def get_required_fields (self):
         return self._required_fields
