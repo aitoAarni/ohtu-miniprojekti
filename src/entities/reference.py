@@ -19,8 +19,12 @@ class Reference:
         }
         self._required_fields = ["citekey", "author", "title", "journal", "year"]
 
-    def get_required_fields (self):
+    def get_required_fields (self) -> list:
         return self._required_fields
 
-    def get_fields(self):
-        return self.fields
+    def get_fields(self) -> dict:
+        return self._fields
+
+    def set_field(self, key: str, value: str):
+        self._fields[key] = value
+
