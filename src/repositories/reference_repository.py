@@ -6,14 +6,13 @@ class ReferenceRepository:
 
     def __init__(self, connection=get_database_connection()):
         self._connection = connection
-        pass
 
     def get_all(self):
         all_data = []
 
         cursor = self._connection.cursor()
 
-        cursor.execute('''SELECT 
+        cursor.execute('''SELECT
                 citekey,
                 author,
                 title,
@@ -22,7 +21,7 @@ class ReferenceRepository:
                 year,
                 volume_or_number,
                 volume,
-                number, 
+                number,
                 pages,
                 series,
                 address,
@@ -51,7 +50,7 @@ class ReferenceRepository:
                 year,
                 volume_or_number,
                 volume,
-                number, 
+                number,
                 pages,
                 series,
                 address,
@@ -78,7 +77,7 @@ class ReferenceRepository:
                        )
 
         self._connection.commit()
-    
+
     def delete_all(self):
         cursor = self._connection.cursor()
         cursor.execute('DELETE FROM REFERENCE')
@@ -94,6 +93,50 @@ class ReferenceRepository:
         result = cursor.fetchone()
 
         return bool(not result)
+
+    def fetch_selected_references_data_fields(self, citekey: str) -> dict:
+        """Returns a dictionary containing the data fields of the selected reference. If citekey is invalid, an empty dictionary is returned.
+
+        Args:
+            citekey (str): citekey of the reference
+
+        Returns:
+            dict: contains the datafields of the requested reference. If no reference is found, an empty dictionary is returned.
+        """
+        cursor = self._connection.cursor()
+        cursor.execute('''
+            SELECT *
+            FROM REFERENCE
+            WHERE citekey=?
+        ''', [citekey])
+
+        row = cursor.fetchone()
+        if not row:
+            return {}
+        result = dict(zip(row.keys(), row))
+        return result
+
+    def delete_selected_reference(self, citekey: str) -> str:
+        cursor = self._connection.cursor()
+        if not self.citekey_is_available(citekey):
+
+            cursor.execute('''
+                DELETE FROM REFERENCE
+                WHERE citekey=?
+            ''', [citekey])
+
+            self._connection.commit()
+
+            return citekey
+
+        return ""
+
+    def edit_selected_reference(self, reference: Reference):
+        citekey = reference.fields["citekey"] or ""
+        if self.citekey_is_available(citekey):
+            return
+        self.delete_selected_reference(citekey)
+        self.add_reference(reference)
 
 
 default_reference_repository = ReferenceRepository(get_database_connection())

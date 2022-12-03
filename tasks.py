@@ -3,7 +3,7 @@ from invoke import task
 
 @task
 def start(ctx):
-    ctx.run("DATABASE_FILENAME=database.db python3 src/index.py", pty=True)
+    ctx.run("python3 src/index.py", pty=True)
 
 
 @task

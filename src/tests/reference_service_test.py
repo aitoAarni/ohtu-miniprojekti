@@ -1,5 +1,5 @@
 import unittest
-from unittest.mock import Mock, ANY
+from unittest.mock import Mock
 from services.reference_service import ReferenceService
 from repositories.reference_repository import ReferenceRepository
 
@@ -55,5 +55,3 @@ class TestReferenceService(unittest.TestCase):
         citekeys = "cormen01", "cormen02", "martin01"
 
         self.assertEqual(references_citekeys, citekeys)
-
-

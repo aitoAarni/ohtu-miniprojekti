@@ -1,7 +1,4 @@
-
-
 class Reference:
-    
     def __init__(self):
         self._fields = {
             "citekey": None,

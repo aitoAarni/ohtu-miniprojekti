@@ -31,15 +31,20 @@ Paketoidaan sovelluksen toimintalogiikka
 - Sovelluslogiikka
 - repositoriosta huolehtiva koodi
 
+## Dokumentaatio
+
+[Sovelluksen arkkitehtuuri](/documentation/architecture.md)  
+[Käyttöohje](/documentation/operation-manual.md)
+
 ## Linkit
 
 [Structured Backlog](https://docs.google.com/spreadsheets/d/1XYFtrZ4NT5crDIYqlv-1CX1kRro6Nn1QrsbifLbLkDY/edit?usp=sharing)
 
 ## Definiton of Done
 
-- määritelty
-- suunniteltu
-- toteutettu
-- yksikkötestattu
-- integraatiotestattu
-- otettu tuotantoon
+- määritelty: user story purettu taskien tasolle yhteisymmärryksessä
+- suunniteltu: taskien yksityiskohdat sovittu ja suunnitelty yhdessä, taskit jaettu
+- toteutettu: toiminnallisuus toteuttaa user storyn vaatimukset
+- yksikkötestattu: 80% testikattavuus
+- integraatiotestattu: hyväksytysti CI ja testit läpi
+- otettu tuotantoon: toiminnallisuus implementoitu tuotteesseen

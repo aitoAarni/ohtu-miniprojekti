@@ -27,5 +27,8 @@ jobs:
         run: poetry run coverage xml
       - name: Coverage report to Codecov
         run: bash <(curl -s https://codecov.io/bash)
-#      - name: run pylint
-#        run: poetry run pylint src
+      - name: run pylint
+        run: poetry run pylint src
+      - name: Run robot tests
+        run: bash run_robot_tests.sh
+

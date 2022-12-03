@@ -1,14 +1,13 @@
 import unittest
 from initialize_database import initialize_database
 from repositories.reference_repository import default_reference_repository
-from repositories.reference_repository import ReferenceRepository
 from entities.reference import Reference
 
 
 class TestReferenceRepository(unittest.TestCase):
 
     def setUp(self):
-        self.db = initialize_database()
+        initialize_database()
         self.reference_repository = default_reference_repository
 
     def test_get_all_returns_three_entries(self):

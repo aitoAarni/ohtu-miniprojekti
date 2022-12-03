@@ -37,7 +37,7 @@ def create_tables(connection):
             volume_or_number TEXT,
             volume TEXT,
             number INTEGER,
-            pages, INTEGERw,
+            pages INTEGER,
             series TEXT,
             address TEXT,
             edition TEXT,
