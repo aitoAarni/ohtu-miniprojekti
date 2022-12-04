@@ -19,7 +19,7 @@ class AppLibrary:
         self._stub_io.add_reference_field(value)
 
     def run_application(self):
-        self._stub_io.inputs = self._stub_io.inputs + [""] * (15 -len(self._stub_io.inputs)) + ["list"] + ["exit"]
+        self._stub_io.inputs = self._stub_io.inputs + ["list"] + ["exit"]#+ [""] * (15 -len(self._stub_io.inputs)) + kommentoituna koska tätä kirjoittaessa reference kysyy vain 5 pakollista kenttää
         self._interface.start()
 
     def clear_inputs(self):
@@ -28,6 +28,8 @@ class AppLibrary:
     def output_should_contain(self):
         references = self._interface.reference_service.get_all_references()[0]
         for test_input in self._stub_io.added:
+            if test_input.isdigit():
+                test_input = int(test_input)
             if test_input not in references.values():
                 raise AssertionError(f"test input {test_input}  is not in references {references}")
 
