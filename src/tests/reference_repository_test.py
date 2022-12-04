@@ -71,7 +71,6 @@ class TestReferenceRepository(unittest.TestCase):
         reference.set_field("author", "Dog McMuffin")
         reference.set_field("citekey", "Cat02")
         self.reference_repository.update_selected_reference(reference)
-        citekey = reference._fields["citekey"]
         updated_reference = self.reference_repository.fetch_selected_references_data_fields(
             "Cat01")
         self.assertEqual(
