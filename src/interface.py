@@ -76,3 +76,7 @@ class Interface:
     def create_bib(self, file_name):
         self.reference_service.create_bib(file_name)
         self.user_io.output_reference("Bib file saved into saved_exports directory\n")
+
+
+    def delete_reference(self):
+        pass

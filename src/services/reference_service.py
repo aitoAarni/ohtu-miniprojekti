@@ -64,3 +64,6 @@ class ReferenceService:
         bib = BibExport(f'{name}.bib')
         references = self.get_all_references()
         bib.create_bib_export(references)
+
+    def delete_reference(self):
+        pass
