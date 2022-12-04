@@ -24,7 +24,7 @@ class Interface:
             self.list_references()
         elif command == "export":
             file_name = self.create_name_for_bib()
-            self.reference_service.create_bib(file_name)
+            self.create_bib(file_name)
 
     def new_reference(self):
         fields_dict = self.reference_service.get_template_reference()
@@ -72,3 +72,7 @@ class Interface:
             user_input = self.user_io.input_reference("\t Enter a name for your bib file: ")
             validity = self.reference_service.check_bib_name_validity(user_input)
         return user_input
+
+    def create_bib(self, file_name):
+        self.reference_service.create_bib(file_name)
+        self.user_io.output_reference("Bib file saved into saved_exports directory\n")

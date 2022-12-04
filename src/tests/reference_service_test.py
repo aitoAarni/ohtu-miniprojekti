@@ -64,3 +64,13 @@ class TestReferenceService(unittest.TestCase):
         citekeys = "cormen01", "cormen02", "martin01"
 
         self.assertEqual(references_citekeys, citekeys)
+
+    def test_check_bib_name_validity_returns_correct_str_when_no_name_given(self):
+        result = self.reference_service.check_bib_name_validity(None)
+
+        self.assertEqual(result, 'Input required')
+
+    def test_check_bib_name_validity_returns_correct_str_when_name_contains_spaces(self):
+        result = self.reference_service.check_bib_name_validity('te st')
+
+        self.assertEqual(result, 'Spaces not allowed, use "_"')

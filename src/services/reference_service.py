@@ -1,6 +1,7 @@
 import os
 from entities.reference import Reference
 from config import EXPORT_PATH
+from .bib_export import BibExport
 
 class ReferenceService:
     def __init__(self, reference_repository):
@@ -59,5 +60,7 @@ class ReferenceService:
 
         return True
 
-    def create_bib(self, name):#kesken
-        pass
+    def create_bib(self, name):
+        bib = BibExport(f'{name}.bib')
+        references = self.get_all_references()
+        bib.create_bib_export(references)
