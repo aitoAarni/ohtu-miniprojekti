@@ -51,3 +51,6 @@ class TestInterface(unittest.TestCase):
         result = self.interface.list_references()
 
         self.assertEqual(db, result)
+
+    def test_delete_reference(self):
+        pass

@@ -74,3 +74,6 @@ class TestReferenceService(unittest.TestCase):
         result = self.reference_service.check_bib_name_validity('te st')
 
         self.assertEqual(result, 'Spaces not allowed, use "_"')
+
+    def test_delete_refernce_by_citekey(self):
+        pass
