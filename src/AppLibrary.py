@@ -2,6 +2,7 @@ from stub_io import StubIO
 from ui.interface import Interface
 from services.reference_service import ReferenceService
 from repositories.reference_repository import default_reference_repository
+from entities.reference import Reference
 
 class AppLibrary:
     def __init__(self) -> None:
@@ -25,6 +26,18 @@ class AppLibrary:
     def clear_inputs(self):
         self._stub_io.clear_inputs()
 
+
+    def add_reference_to_database(self, citekey="testCitekey"):
+        reference_dict = {
+            "citekey": citekey,
+            "author": "testAuthor",
+            "title": "testTitle",
+            "journal": "testJournal",
+            "year": "testYear"
+        }
+        self._reference_service.save_reference(reference_dict)
+
+
     def output_should_contain(self):
         references = self._interface.reference_service.get_all_references()[0]
         for test_input in self._stub_io.added:
@@ -34,4 +47,14 @@ class AppLibrary:
                 raise AssertionError(f"test input {test_input}  is not in references {references}")
 
     def view_all_references(self):
+        print(self._interface.reference_service.get_all_references())
         self._interface.reference_service.get_all_references()
+
+
+if __name__ == "__main__":
+    app = AppLibrary()
+    app.delete_records_from_database()
+    app._reference_service.get_template_reference()
+    app.view_all_references()
+    app.add_reference_to_database("peep3")
+    app.view_all_references()
