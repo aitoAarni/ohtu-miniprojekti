@@ -65,5 +65,7 @@ class ReferenceService:
         references = self.get_all_references()
         bib.create_bib_export(references)
 
-    def delete_reference(self):
-        pass
+    def delete_reference(self, citekey):
+        result = self.reference_repository.delete_selected_reference(citekey)
+        return result
+        
