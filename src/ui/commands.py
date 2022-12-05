@@ -7,6 +7,8 @@ def command_selector(command, reference_service, user_io):
     elif command == "export":
         file_name = create_name_for_bib(reference_service, user_io)
         create_bib(reference_service, user_io, file_name)
+    elif command == "delete":
+        pass
 
 def new_reference(reference_service, user_io):
     fields_dict = reference_service.get_template_reference()
