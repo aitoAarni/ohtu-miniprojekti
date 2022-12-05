@@ -58,4 +58,3 @@ class AppLibrary:
 
 if __name__ == "__main__":
     app =AppLibrary()
-    
