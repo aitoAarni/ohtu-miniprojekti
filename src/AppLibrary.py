@@ -10,7 +10,7 @@ class AppLibrary:
         self._stub_io = StubIO()
         self._interface = Interface(self._reference_service, self._stub_io)
 
-    def delete_records_from_database(self):
+    def delete_all_records_from_database(self):
         self._reference_service.reference_repository.delete_all()
 
     def add_input(self, value):
@@ -19,13 +19,13 @@ class AppLibrary:
     def run_application(self):
         self._interface.start()
 
-    def add_reference_to_database(self, citekey="testCitekey"):
+    def create_reference_to_database(self, citekey, author, title, journal, year):
         reference_dict = {
             "citekey": citekey,
-            "author": "testAuthor",
-            "title": "testTitle",
-            "journal": "testJournal",
-            "year": "testYear"
+            "author": author,
+            "title": title,
+            "journal": journal,
+            "year": int(year)
         }
         # get_template_reference() is called to change ReferenceService
         # object's reference attribute
@@ -34,12 +34,18 @@ class AppLibrary:
         self._reference_service.save_reference(reference_dict)
 
 
-    def output_should_contain(self, citekey):
+    def output_should_contain(self, *fields):
+        keys = self._reference_service.get_required_fields()
+        user_passed_fields_dict = {keys[i]: field for i, field in enumerate(fields)}
         references = self.get_all_references()
         for test_input in references:
-            if citekey == test_input["citekey"]:
+            user_record_in_database = True
+            for key, user_input in user_passed_fields_dict.items():
+                if str(test_input[key]) != user_input:
+                    user_record_in_database = False
+            if user_record_in_database:
                 return True
-        raise AssertionError(f"citekey {citekey} is not in references")
+        raise AssertionError(f"Fields {fields} are not in a reference")
 
     def get_all_references(self):
         return self._interface.reference_service.get_all_references()
@@ -51,4 +57,4 @@ class AppLibrary:
 
 
 if __name__ == "__main__":
-    pass
+    app =AppLibrary()

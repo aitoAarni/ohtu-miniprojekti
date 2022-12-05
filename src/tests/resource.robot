@@ -7,7 +7,5 @@ Input Command
     [Arguments]  ${argument}
     Add Input  ${argument}
 
-*** Keywords ***
-Output Should Contain Citekey
-    [Arguments]  ${citekey}
-    Output Should Contain  ${citekey}
+Add Reference To Database
+    Create Reference To Database  serious business  Teppo  lil study  some scrappy one  2000

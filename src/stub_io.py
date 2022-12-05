@@ -14,4 +14,3 @@ class StubIO:
 
     def add_input(self, value):
         self.inputs.append(value)
-
