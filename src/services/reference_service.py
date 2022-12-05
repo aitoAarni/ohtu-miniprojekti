@@ -68,3 +68,13 @@ class ReferenceService:
     def delete_reference_by_citekey(self, citekey):
         result = self.reference_repository.delete_selected_reference(citekey)
         return result
+
+    def edit_reference(self, reference):
+        new_reference = Reference()
+        for key, value in reference.items():
+            new_reference.set_field(key, value)
+        return self.reference_repository.update_selected_reference(new_reference)
+
+    def get_reference(self, citekey):
+        reference = self.reference_repository.fetch_selected_references_data_fields(citekey)
+        return reference
