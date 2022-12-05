@@ -8,7 +8,7 @@ class Interface:
     def start(self):
         while True:
             command = self.user_io.input_reference(
-                "Enter command: (new, list, export, exit): ").lower()
+                "Enter command: (new, list, export, delete, exit): ").lower()
 
             if command == "exit":
                 self.user_io.output_reference("Exit selected, goodbye")
