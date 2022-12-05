@@ -66,4 +66,3 @@ def create_bib(reference_service, user_io, file_name):
 def delete_reference(reference_service, user_io):
     citekey = user_io.input_reference("\t Enter citekey: ")
     reference_service.delete_reference(citekey)
-    
