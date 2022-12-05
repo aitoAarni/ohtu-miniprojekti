@@ -1,7 +1,8 @@
 *** Settings ***
 Library  ../AppLibrary.py
 
-    
+
+
 *** Keywords *** 
 Input Command
     [Arguments]  ${argument}
