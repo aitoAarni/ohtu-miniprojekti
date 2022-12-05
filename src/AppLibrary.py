@@ -18,7 +18,7 @@ class AppLibrary:
 
     def run_application(self):
         self._interface.start()
-
+    #pylint: disable=too-many-arguments
     def create_reference_to_database(self, citekey, author, title, journal, year):
         reference_dict = {
             "citekey": citekey,
@@ -58,3 +58,4 @@ class AppLibrary:
 
 if __name__ == "__main__":
     app =AppLibrary()
+    
