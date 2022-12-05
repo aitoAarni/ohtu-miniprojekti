@@ -2,7 +2,7 @@ from stub_io import StubIO
 from ui.interface import Interface
 from services.reference_service import ReferenceService
 from repositories.reference_repository import default_reference_repository
-from entities.reference import Reference
+
 
 class AppLibrary:
     def __init__(self) -> None:
@@ -16,16 +16,8 @@ class AppLibrary:
     def add_input(self, value):
         self._stub_io.add_input(value)
 
-    def add_reference_input(self, value):
-        self._stub_io.add_reference_field(value)
-
     def run_application(self):
-        self._stub_io.inputs = self._stub_io.inputs + ["list"] + ["exit"]
         self._interface.start()
-
-    def clear_inputs(self):
-        self._stub_io.clear_inputs()
-
 
     def add_reference_to_database(self, citekey="testCitekey"):
         reference_dict = {
@@ -35,26 +27,28 @@ class AppLibrary:
             "journal": "testJournal",
             "year": "testYear"
         }
+        # get_template_reference() is called to change ReferenceService
+        # object's reference attribute
+        # to have a reference object in it (initially it is None)
+        self._reference_service.get_template_reference()
         self._reference_service.save_reference(reference_dict)
 
 
-    def output_should_contain(self):
-        references = self._interface.reference_service.get_all_references()[0]
-        for test_input in self._stub_io.added:
-            if test_input.isdigit():
-                test_input = int(test_input)
-            if test_input not in references.values():
-                raise AssertionError(f"test input {test_input}  is not in references {references}")
+    def output_should_contain(self, citekey):
+        references = self.get_all_references()
+        for test_input in references:
+            if citekey == test_input["citekey"]:
+                return True
+        raise AssertionError(f"citekey {citekey} is not in references")
 
-    def view_all_references(self):
-        print(self._interface.reference_service.get_all_references())
-        self._interface.reference_service.get_all_references()
+    def get_all_references(self):
+        return self._interface.reference_service.get_all_references()
+
+    def output_should_be_empty(self):
+        references = self.get_all_references()
+        if len(references) != 0:
+            raise AssertionError("There shouldn't be any references in the database, but there are")
 
 
 if __name__ == "__main__":
-    app = AppLibrary()
-    app.delete_records_from_database()
-    app._reference_service.get_template_reference()
-    app.view_all_references()
-    app.add_reference_to_database("peep3")
-    app.view_all_references()
+    pass

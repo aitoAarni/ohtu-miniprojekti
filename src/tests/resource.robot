@@ -1,13 +1,13 @@
 *** Settings ***
 Library  ../AppLibrary.py
 
+    
+*** Keywords *** 
+Input Command
+    [Arguments]  ${argument}
+    Add Input  ${argument}
+
 *** Keywords ***
-Input Commands
-    Input  value
-
-Clear Inputs
-    Clear Inputs
-
-Choose Operation
-    [Arguments]  ${operation}
-    Add Input  ${operation}
+Output Should Contain Citekey
+    [Arguments]  ${citekey}
+    Output Should Contain  ${citekey}
