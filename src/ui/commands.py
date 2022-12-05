@@ -8,7 +8,7 @@ def command_selector(command, reference_service, user_io):
         file_name = create_name_for_bib(reference_service, user_io)
         create_bib(reference_service, user_io, file_name)
     elif command == "delete":
-        pass
+        delete_reference(reference_service, user_io)
 
 def new_reference(reference_service, user_io):
     fields_dict = reference_service.get_template_reference()
@@ -63,5 +63,7 @@ def create_bib(reference_service, user_io, file_name):
     user_io.output_reference("Bib file saved into saved_exports directory\n")
 
 
-def delete_reference(self):
-    pass
+def delete_reference(reference_service, user_io):
+    citekey = user_io.input_reference("\t Enter citekey: ")
+    reference_service.delete_reference(citekey)
+    
