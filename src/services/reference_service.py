@@ -68,4 +68,3 @@ class ReferenceService:
     def delete_reference(self, citekey):
         result = self.reference_repository.delete_selected_reference(citekey)
         return result
-        
