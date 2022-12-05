@@ -1,9 +1,13 @@
+from collections import defaultdict
+
 def command_selector(command, reference_service, user_io):
     if command == "new":
         fields_dict = new_reference(reference_service, user_io)
         reference_service.save_reference(fields_dict)
     elif command == "list":
         list_references(reference_service, user_io)
+    elif command == "edit":
+        edit_reference(reference_service, user_io)
     elif command == "export":
         file_name = create_name_for_bib(reference_service, user_io)
         create_bib(reference_service, user_io, file_name)
@@ -70,3 +74,41 @@ def delete_reference(reference_service, user_io):
         user_io.output_reference("Nothing deleted\n")
     else:
         user_io.output_reference("Entry deleted\n")
+
+def edit_reference(reference_service, user_io):
+    user_io.output_reference("Edit reference selected, select a citekey to edit: \n")
+    list_references(reference_service, user_io)
+    citekey_input = user_io.input_reference("Enter a citekey: ")
+    reference = reference_service.get_reference(citekey_input)
+
+    while not reference:
+        citekey_input = user_io.input_reference("Invalid citekey, try again: ")
+        reference = reference_service.get_reference(citekey_input)
+
+    reference = filter_out_empty_fields(reference)
+    fields = list(reference.keys())
+
+    user_io.output_reference(f"\nEnter new fields for citekey {reference['citekey']}: \n")
+
+    new_reference = defaultdict(lambda: "")
+
+    for field in fields:
+        if field == "citekey":
+            new_reference[field] = reference[field]
+        while not new_reference[field]:
+            new_reference[field] = user_io.input_reference(f"Enter new value for {field}: ")
+
+    result = reference_service.edit_reference(new_reference)
+    result_dict = result.get_fields()
+
+    print("")
+    if result:
+        user_io.output_reference(f"Reference {result_dict['citekey']} updated")
+    else:
+        user_io.output_reference("Error: Reference not updated!")
+    print("")
+
+
+def filter_out_empty_fields(reference):
+    filter_empty_values = {key:value for (key, value) in reference.items() if value is not None}
+    return filter_empty_values

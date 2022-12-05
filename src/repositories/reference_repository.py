@@ -138,5 +138,7 @@ class ReferenceRepository:
         self.delete_selected_reference(citekey)
         self.add_reference(reference)
 
+        return reference
+
 
 default_reference_repository = ReferenceRepository(get_database_connection())
