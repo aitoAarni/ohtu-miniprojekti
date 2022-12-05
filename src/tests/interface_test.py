@@ -53,5 +53,10 @@ class TestInterface(unittest.TestCase):
 
         self.assertEqual(db, result)
 
-    def test_delete_reference(self):
-        pass
+    def test_delete_reference_with_valid_citekey(self):
+        result = self.reference_service.delete_reference_by_citekey("martin01")
+        self.assertEqual(result, "martin01")
+
+    def test_delete_reference_with_not_valid_citekey(self):
+        result = self.reference_service.delete_reference_by_citekey("iida")
+        self.assertEqual(result, "")

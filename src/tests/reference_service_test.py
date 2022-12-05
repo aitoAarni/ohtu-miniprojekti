@@ -3,11 +3,10 @@ from unittest.mock import Mock
 from services.reference_service import ReferenceService
 from repositories.reference_repository import ReferenceRepository
 
-
 class TestReferenceService(unittest.TestCase):
     def setUp(self):
-        reference_repository_mock = Mock(wraps=ReferenceRepository())
-        self.reference_service = ReferenceService(reference_repository_mock)
+        self.reference_repository_mock = Mock(wraps=ReferenceRepository())
+        self.reference_service = ReferenceService(self.reference_repository_mock)
 
     def test_save_reference_creates_correct_dict(self):
         reference_correct_fields = {
@@ -60,8 +59,8 @@ class TestReferenceService(unittest.TestCase):
 
     def test_get_all_references_right_citekeys(self):
         references = self.reference_service.get_all_references()
-        references_citekeys = references[0]['citekey'], references[1]['citekey'], references[2]['citekey']
-        citekeys = "cormen01", "cormen02", "martin01"
+        references_citekeys = references[0]['citekey'], references[1]['citekey']
+        citekeys = "cormen01", "cormen02"
 
         self.assertEqual(references_citekeys, citekeys)
 
@@ -75,5 +74,6 @@ class TestReferenceService(unittest.TestCase):
 
         self.assertEqual(result, 'Spaces not allowed, use "_"')
 
-    def test_delete_refernce_by_citekey(self):
-        pass
+    def test_delete_reference_by_citekey(self):
+        result = self.reference_repository_mock.delete_selected_reference("martin01")
+        self.assertEqual(result, "martin01")
