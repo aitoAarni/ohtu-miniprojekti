@@ -134,7 +134,7 @@ class ReferenceRepository:
     def update_selected_reference(self, reference: Reference):
         citekey = reference.get_fields()["citekey"] or ""
         if self.citekey_is_available(citekey):
-            return
+            return None
         self.delete_selected_reference(citekey)
         self.add_reference(reference)
 

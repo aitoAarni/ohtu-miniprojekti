@@ -90,15 +90,15 @@ def edit_reference(reference_service, user_io):
 
     user_io.output_reference(f"\nEnter new fields for citekey {reference['citekey']}: \n")
 
-    new_reference = defaultdict(lambda: "")
+    result_reference = defaultdict(lambda: "")
 
     for field in fields:
         if field == "citekey":
-            new_reference[field] = reference[field]
-        while not new_reference[field]:
-            new_reference[field] = user_io.input_reference(f"Enter new value for {field}: ")
+            result_reference[field] = reference[field]
+        while not result_reference[field]:
+            result_reference[field] = user_io.input_reference(f"Enter new value for {field}: ")
 
-    result = reference_service.edit_reference(new_reference)
+    result = reference_service.edit_reference(result_reference)
     result_dict = result.get_fields()
 
     print("")

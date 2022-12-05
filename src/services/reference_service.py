@@ -73,7 +73,6 @@ class ReferenceService:
         new_reference = Reference()
         for key, value in reference.items():
             new_reference.set_field(key, value)
-        
         return self.reference_repository.update_selected_reference(new_reference)
 
     def get_reference(self, citekey):
