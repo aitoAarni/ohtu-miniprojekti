@@ -1,5 +1,5 @@
 from stub_io import StubIO
-from interface import Interface
+from ui.interface import Interface
 from services.reference_service import ReferenceService
 from repositories.reference_repository import default_reference_repository
 

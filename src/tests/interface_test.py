@@ -1,5 +1,6 @@
 import unittest
-from interface import Interface
+from ui.interface import Interface
+from ui.commands import list_references
 from services.reference_service import ReferenceService
 from repositories.reference_repository import default_reference_repository
 from stub_io import StubIO
@@ -48,7 +49,7 @@ class TestInterface(unittest.TestCase):
 
     def test_list_references_returns_all_references(self):
         db = self.reference_repository.get_all()
-        result = self.interface.list_references()
+        result = list_references(self.reference_service, self.user_io)
 
         self.assertEqual(db, result)
 
