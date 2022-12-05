@@ -64,5 +64,9 @@ def create_bib(reference_service, user_io, file_name):
 
 
 def delete_reference(reference_service, user_io):
-    citekey = user_io.input_reference("\t Enter citekey: ")
-    reference_service.delete_reference(citekey)
+    user_input = user_io.input_reference("\t Enter citekey: ")
+    result = reference_service.delete_reference(user_input)
+    if not result:
+        user_io.output_reference("Nothing deleted\n")
+    else:
+        user_io.output_reference("Entry deleted\n")
