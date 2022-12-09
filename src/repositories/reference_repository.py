@@ -2,7 +2,6 @@ from database_connection import get_database_connection
 from database_connection import get_test_database_connection
 from entities.reference import Reference
 
-
 class ReferenceRepository:
 
     def __init__(self, connection=get_database_connection()):
@@ -140,6 +139,24 @@ class ReferenceRepository:
         self.add_reference(reference)
 
         return reference
+
+    def fetch_matching_references(self, match_string: str):
+        cursor = self._connection.cursor()
+        command = """
+        SELECT * FROM REFERENCE WHERE 
+        lower(citekey) LIKE ?
+        or lower(author) LIKE ?
+        or lower(title) LIKE ?
+        or lower(journal) LIKE ?
+        or lower(year) LIKE ?
+        ;
+        """
+        cursor.execute(command, [(f"%{match_string}%".lower())] * 5)
+        rows = cursor.fetchall()
+        references = []
+        for row in rows:
+            references.append(dict(zip(row.keys(), row)))
+        return references
 
 
 default_reference_repository = ReferenceRepository(get_database_connection())
