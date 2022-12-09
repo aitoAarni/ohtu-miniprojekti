@@ -1,4 +1,5 @@
 from database_connection import get_database_connection
+from database_connection import get_test_database_connection
 from entities.reference import Reference
 
 
@@ -142,3 +143,5 @@ class ReferenceRepository:
 
 
 default_reference_repository = ReferenceRepository(get_database_connection())
+default_test_reference_repository = ReferenceRepository(
+    get_test_database_connection())

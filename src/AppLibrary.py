@@ -1,12 +1,13 @@
 from stub_io import StubIO
 from ui.interface import Interface
 from services.reference_service import ReferenceService
-from repositories.reference_repository import default_reference_repository
+from repositories.reference_repository import default_test_reference_repository
 
 
 class AppLibrary:
     def __init__(self) -> None:
-        self._reference_service = ReferenceService(default_reference_repository)
+        self._reference_service = ReferenceService(
+            default_test_reference_repository)
         self._stub_io = StubIO()
         self._interface = Interface(self._reference_service, self._stub_io)
 
@@ -19,6 +20,7 @@ class AppLibrary:
     def run_application(self):
         self._interface.start()
     #pylint: disable=too-many-arguments
+
     def create_reference_to_database(self, citekey, author, title, journal, year):
         reference_dict = {
             "citekey": citekey,
@@ -33,10 +35,10 @@ class AppLibrary:
         self._reference_service.get_template_reference()
         self._reference_service.save_reference(reference_dict)
 
-
     def output_should_contain(self, *fields):
         keys = self._reference_service.get_required_fields()
-        user_passed_fields_dict = {keys[i]: field for i, field in enumerate(fields)}
+        user_passed_fields_dict = {
+            keys[i]: field for i, field in enumerate(fields)}
         references = self.get_all_references()
         for test_input in references:
             user_record_in_database = True
@@ -53,8 +55,9 @@ class AppLibrary:
     def output_should_be_empty(self):
         references = self.get_all_references()
         if len(references) != 0:
-            raise AssertionError("There shouldn't be any references in the database, but there are")
+            raise AssertionError(
+                "There shouldn't be any references in the database, but there are")
 
 
 if __name__ == "__main__":
-    app =AppLibrary()
+    app = AppLibrary()
