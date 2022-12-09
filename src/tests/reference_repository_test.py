@@ -10,6 +10,19 @@ class TestReferenceRepository(unittest.TestCase):
         initialize_database()
         self.reference_repository = default_reference_repository
 
+    def add_reference(self, citekey):
+        reference = Reference()
+        reference._fields = {
+            "citekey": citekey,
+            "author": "Cat McMuffin",
+            "title": "Meow",
+            "journal": "Catnip daily",
+            "year": 2020,
+            "volume": "22",
+            "pages": 1
+        }
+        self.reference_repository.add_reference(reference)
+
     def test_get_all_returns_three_entries(self):
         result = self.reference_repository.get_all()
         self.assertEqual(3, len(result))
@@ -84,18 +97,8 @@ class TestReferenceRepository(unittest.TestCase):
                          len(entries), len(entries))
 
     def test_delete_selected_works(self):
-        reference = Reference()
-        reference._fields = {
-            "citekey": "Cat01",
-            "author": "Cat McMuffin",
-            "title": "Meow",
-            "journal": "Catnip daily",
-            "year": 2020,
-            "volume": "22",
-            "pages": 1
-        }
-        self.reference_repository.add_reference(reference)
-        citekey = reference._fields["citekey"]
+        citekey = "Cato01"
+        self.add_reference(citekey)
         self.reference_repository.delete_selected_reference(citekey)
         fetched_reference = self.reference_repository.fetch_selected_references_data_fields(
             citekey)
@@ -106,3 +109,23 @@ class TestReferenceRepository(unittest.TestCase):
         self.reference_repository.delete_selected_reference("unused_citekey")
         entries_after_deletion = self.reference_repository.get_all()
         self.assertEqual(len(entries), len(entries_after_deletion))
+    
+    def test_fetch_matching_reference_fetches_right_reference(self):
+        citekey1 = "Cato01"
+        citekey2 = "Doggo01"
+        self.reference_repository.delete_all()
+        self.add_reference(citekey1)
+        self.add_reference(citekey2)
+        reference_list = self.reference_repository.fetch_matching_references("ato")
+        self.assertEqual(len(reference_list), 1)
+    
+    def test_fetch_matching_reference_fetches_all_matching_references(self):
+        citekey1 = "Cato01"
+        citekey2 = "Doggo01"
+        citekey3 = "Puppie01"
+        self.reference_repository.delete_all()
+        self.add_reference(citekey1)
+        self.add_reference(citekey2)
+        self.add_reference(citekey3)
+        reference_list = self.reference_repository.fetch_matching_references("o01")
+        self.assertEqual(len(reference_list), 2)
