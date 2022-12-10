@@ -17,9 +17,10 @@ class Reference:
             "month": None,
             "note": None
         }
-        self._required_fields = ["citekey", "author", "title", "journal", "year"]
+        self._required_fields = ["citekey",
+                                 "author", "title", "journal", "year"]
 
-    def get_required_fields (self) -> list:
+    def get_required_fields(self) -> list:
         return self._required_fields
 
     def get_fields(self) -> dict:
@@ -28,3 +29,6 @@ class Reference:
     def set_field(self, key: str, value: str):
         if key in self._fields:
             self._fields[key] = value
+
+    def __str__(self):
+        return self._fields
