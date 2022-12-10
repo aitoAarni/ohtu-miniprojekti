@@ -102,7 +102,7 @@ def edit_reference(reference_service, user_io):
     fields = list(reference.keys())
 
     user_io.output_reference(
-        f"\nEnter new fields for citekey {reference['citekey']} (press ENTER to skip field): \n")
+        f"\nEnter new fields for citekey {reference['citekey']} (press ENTER to skip fieldx): \n")
 
     result_reference = defaultdict(lambda: "")
 
@@ -110,9 +110,10 @@ def edit_reference(reference_service, user_io):
         if field == "citekey":
             result_reference[field] = reference[field]
         while not result_reference[field]:
-            input = user_io.input_reference(f"Enter new value for {field}: ")
-            if input:
-                result_reference[field] = input
+            user_input = user_io.input_reference(
+                f"Enter new value for {field}: ")
+            if user_input:
+                result_reference[field] = user_input
             else:
                 result_reference[field] = reference[field]
 
