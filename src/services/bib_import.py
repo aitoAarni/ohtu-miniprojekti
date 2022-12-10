@@ -34,3 +34,4 @@ class BibImport:
                     parts = row.split("=")
                     reference.set_field(parts[0][4:-1], parts[1][2:-2])
             references.append(reference)
+        return references

@@ -131,4 +131,9 @@ def import_file(file_name, reference_service, user_io):
     if not file_name:
         return
 
-    user_io.output_reference('<Functionality still in construction> \n')
+    imported_citekeys = reference_service.import_file(file_name)
+    user_io.output_reference('Imported citekeys: \n')
+    for citekey in imported_citekeys:
+        user_io.output_reference(f'{citekey}\n')
+    if not imported_citekeys or imported_citekeys == []:
+        user_io.output_reference('None\n')

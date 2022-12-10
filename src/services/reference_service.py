@@ -2,6 +2,7 @@ import os
 from entities.reference import Reference
 from config import EXPORT_PATH, IMPORT_PATH
 from .bib_export import BibExport
+from .bib_import import BibImport
 
 class ReferenceService:
     def __init__(self, reference_repository):
@@ -88,3 +89,11 @@ class ReferenceService:
             if file[-4:] == '.bib':
                 bib_files.append(file)
         return bib_files
+
+    def import_file(self, file_name:str) -> list:
+        bib = BibImport()
+        reference_entities_list = bib.create_reference_entities(file_name)
+        #print(reference_entities_list) #this is for testing
+        imported_references = self.reference_repository.add_references_from_bib_file(reference_entities_list)
+        imported_citekeys = [reference.get_fields()['citekey'] for reference in imported_references]
+        return imported_citekeys
