@@ -8,12 +8,17 @@ try:
 except FileNotFoundError:
     pass
 
-path = os.getenv("DEFAULT_EXPORT_PATH") or "saved_exports"
+export_dir = os.getenv("DEFAULT_EXPORT_PATH") or "saved_exports"
+import_dir = os.getenv("DEFAULT_IMPORT_PATH") or "imports"
 
-EXPORT_PATH = os.path.join(dirname, '..', path)
+EXPORT_PATH = os.path.join(dirname, '..', export_dir)
+IMPORT_PATH = os.path.join(dirname, '..', import_dir)
 
 if not os.path.exists(EXPORT_PATH):
     os.makedirs(EXPORT_PATH)
+
+if not os.path.exists(IMPORT_PATH):
+    os.makedirs(IMPORT_PATH)
 
 
 DATABASE_FILENAME = os.getenv('DATABASE_FILENAME') or 'database.db'

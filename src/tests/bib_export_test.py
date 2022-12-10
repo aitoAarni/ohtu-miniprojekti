@@ -2,6 +2,7 @@ import os
 import unittest
 from entities.reference import Reference
 from services.bib_export import BibExport
+from services.file_management import default_file_management as filemanager
 
 
 class TestBibExport(unittest.TestCase):
@@ -18,7 +19,7 @@ class TestBibExport(unittest.TestCase):
 
     def test_constructor_gets_export_path(self):
         bib_exporter = BibExport()
-        path = bib_exporter.directory
+        path = filemanager.directory
         self.assertNotEqual(None, path)
 
     def test_create_export_writes_file(self):
@@ -29,7 +30,7 @@ class TestBibExport(unittest.TestCase):
         ref.set_field("title", "On hard luck")
         fields = [ref.get_fields()]
         bib_exporter.create_bib_export(fields)
-        filepath = os.path.join(bib_exporter.directory, bib_exporter.filename)
+        filepath = os.path.join(filemanager.directory, bib_exporter.filename)
         file_created = os.path.exists(filepath)
         self.assertEqual(file_created, True)
         if file_created:

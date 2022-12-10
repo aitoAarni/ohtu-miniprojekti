@@ -1,5 +1,6 @@
 import os
 from config import EXPORT_PATH
+from .file_management import default_file_management
 
 
 class BibExport:
@@ -11,18 +12,8 @@ class BibExport:
             filename (str, optional): A user given filename. Please note that filename should contain .bib extension.
             This is not validated in this class. Defaults to 'export.bib'.
         """
-        self.directory = EXPORT_PATH
         self.filename = filename
-
-    def write_document(self, content: str):
-        """Writes content to given filename. Please note that mode is set to write, which overwrites file, if file already exists.
-
-        Args:
-            content (str): bibtext-references as a string.
-        """
-        file_and_directory = os.path.join(self.directory, self.filename)
-        with open(file_and_directory, "w", encoding="utf-8") as file:
-            file.write(content)
+        self.filemanager = default_file_management
 
     def create_bib_export(self, references: list):
         """Creates a bibtex-string containing content from all non-empty data fields in given Reference-objects
@@ -41,4 +32,4 @@ class BibExport:
             bib_reference += "}\n\n"
             output += bib_reference
 
-        self.write_document(output)
+        self.filemanager.write_document(output, self.filename)
