@@ -1,5 +1,6 @@
 from collections import defaultdict
 
+
 def command_selector(command, reference_service, user_io):
     if command == "new":
         fields_dict = new_reference(reference_service, user_io)
@@ -17,6 +18,7 @@ def command_selector(command, reference_service, user_io):
     elif command == "delete":
         delete_reference(reference_service, user_io)
 
+
 def new_reference(reference_service, user_io):
     fields_dict = reference_service.get_template_reference()
     required_fields_list = reference_service.get_required_fields()
@@ -32,6 +34,7 @@ def new_reference(reference_service, user_io):
 
     return fields_dict
 
+
 def list_references(reference_service, user_io):
     references = reference_service.get_all_references()
 
@@ -40,8 +43,10 @@ def list_references(reference_service, user_io):
 
     return references
 
+
 def print_reference_objects(reference, user_io):
-    filter_empty_values = list({key:value for (key, value) in reference.items() if value is not None})
+    filter_empty_values = list(
+        {key: value for (key, value) in reference.items() if value is not None})
     last_key = list(filter_empty_values)[-1]
 
     for key, value in reference.items():
@@ -56,14 +61,17 @@ def print_reference_objects(reference, user_io):
             user_io.output_reference(f"  ├── {key}: {value}")
     user_io.output_reference("\n")
 
+
 def create_name_for_bib(reference_service, user_io):
     user_input = user_io.input_reference("\t Enter a name for your bib file: ")
     validity = reference_service.check_bib_name_validity(user_input)
     while validity is not True:
         user_io.output_reference(validity)
-        user_input = user_io.input_reference("\t Enter a name for your bib file: ")
+        user_input = user_io.input_reference(
+            "\t Enter a name for your bib file: ")
         validity = reference_service.check_bib_name_validity(user_input)
     return user_input
+
 
 def create_bib(reference_service, user_io, file_name):
     reference_service.create_bib(file_name)
@@ -78,8 +86,10 @@ def delete_reference(reference_service, user_io):
     else:
         user_io.output_reference("Entry deleted\n")
 
+
 def edit_reference(reference_service, user_io):
-    user_io.output_reference("Edit reference selected, select a citekey to edit: \n")
+    user_io.output_reference(
+        "Edit reference selected, select a citekey to edit: \n")
     list_references(reference_service, user_io)
     citekey_input = user_io.input_reference("Enter a citekey: ")
     reference = reference_service.get_reference(citekey_input)
@@ -91,7 +101,8 @@ def edit_reference(reference_service, user_io):
     reference = filter_out_empty_fields(reference)
     fields = list(reference.keys())
 
-    user_io.output_reference(f"\nEnter new fields for citekey {reference['citekey']}: \n")
+    user_io.output_reference(
+        f"\nEnter new fields for citekey {reference['citekey']} (press ENTER to skip field): \n")
 
     result_reference = defaultdict(lambda: "")
 
@@ -99,7 +110,11 @@ def edit_reference(reference_service, user_io):
         if field == "citekey":
             result_reference[field] = reference[field]
         while not result_reference[field]:
-            result_reference[field] = user_io.input_reference(f"Enter new value for {field}: ")
+            input = user_io.input_reference(f"Enter new value for {field}: ")
+            if input:
+                result_reference[field] = input
+            else:
+                result_reference[field] = reference[field]
 
     result = reference_service.edit_reference(result_reference)
     result_dict = result.get_fields()
@@ -113,8 +128,10 @@ def edit_reference(reference_service, user_io):
 
 
 def filter_out_empty_fields(reference):
-    filter_empty_values = {key:value for (key, value) in reference.items() if value is not None}
+    filter_empty_values = {key: value for (
+        key, value) in reference.items() if value is not None}
     return filter_empty_values
+
 
 def select_importable_file(reference_service, user_io):
     importable_files = reference_service.get_importable_files()
@@ -126,6 +143,7 @@ def select_importable_file(reference_service, user_io):
         user_io.output_reference("File not found \n")
         return False
     return selected_file
+
 
 def import_file(file_name, reference_service, user_io):
     if not file_name:
