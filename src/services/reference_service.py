@@ -42,8 +42,8 @@ class ReferenceService:
                 return 'Digits not allowed'
 
         if field == 'year':
-            for char in user_input:
-                if not char.isdigit():
+            #for char in user_input:
+                if not user_input.isdigit():
                     return 'Only digits allowed'
 
         return True
