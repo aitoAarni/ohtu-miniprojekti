@@ -1,7 +1,4 @@
-import os
-from config import EXPORT_PATH
 from .file_management import default_file_management
-
 
 class BibExport:
 

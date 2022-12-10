@@ -8,6 +8,9 @@ def command_selector(command, reference_service, user_io):
         list_references(reference_service, user_io)
     elif command == "edit":
         edit_reference(reference_service, user_io)
+    elif command == 'import':
+        file_name = select_importable_file(reference_service, user_io)
+        import_file(file_name, reference_service, user_io)
     elif command == "export":
         file_name = create_name_for_bib(reference_service, user_io)
         create_bib(reference_service, user_io, file_name)
@@ -112,3 +115,20 @@ def edit_reference(reference_service, user_io):
 def filter_out_empty_fields(reference):
     filter_empty_values = {key:value for (key, value) in reference.items() if value is not None}
     return filter_empty_values
+
+def select_importable_file(reference_service, user_io):
+    importable_files = reference_service.get_importable_files()
+    user_io.output_reference("Importable files (from imports directory): \n")
+    for file in importable_files:
+        user_io.output_reference(f'{file}\n')
+    selected_file = user_io.input_reference('\t Enter file to be imported: ')
+    if selected_file not in importable_files:
+        user_io.output_reference("File not found \n")
+        return False
+    return selected_file
+
+def import_file(file_name, reference_service, user_io):
+    if not file_name:
+        return
+
+    user_io.output_reference('<Functionality still in construction> \n')

@@ -1,6 +1,6 @@
 import os
 from entities.reference import Reference
-from config import EXPORT_PATH
+from config import EXPORT_PATH, IMPORT_PATH
 from .bib_export import BibExport
 
 class ReferenceService:
@@ -8,6 +8,7 @@ class ReferenceService:
         self.reference_repository = reference_repository
         self.reference = None
         self.export_directory = EXPORT_PATH
+        self.import_directory = IMPORT_PATH
 
     def get_template_reference(self):
         self.reference = Reference()
@@ -78,3 +79,12 @@ class ReferenceService:
     def get_reference(self, citekey):
         reference = self.reference_repository.fetch_selected_references_data_fields(citekey)
         return reference
+
+    def get_importable_files(self):
+        path = self.import_directory
+        all_files = os.listdir(path)
+        bib_files = []
+        for file in all_files:
+            if file[-4:] == '.bib':
+                bib_files.append(file)
+        return bib_files

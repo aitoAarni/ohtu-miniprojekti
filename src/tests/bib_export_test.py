@@ -18,7 +18,6 @@ class TestBibExport(unittest.TestCase):
         self.assertEqual(filename, bib_exporter.filename)
 
     def test_constructor_gets_export_path(self):
-        bib_exporter = BibExport()
         path = filemanager.directory
         self.assertNotEqual(None, path)
 

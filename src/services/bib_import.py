@@ -1,11 +1,10 @@
-from .file_management import default_file_management
 from entities.reference import Reference
-
+from .file_management import default_file_management
 
 class BibImport:
 
     def __init__(self):
-        """Imports bib-files created with this application. 
+        """Imports bib-files created with this application.
         """
         self.filemanager = default_file_management
 
