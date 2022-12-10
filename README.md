@@ -48,3 +48,4 @@ Paketoidaan sovelluksen toimintalogiikka
 - yksikkötestattu: 80% testikattavuus
 - integraatiotestattu: hyväksytysti CI ja testit läpi
 - otettu tuotantoon: toiminnallisuus implementoitu tuotteesseen
+
