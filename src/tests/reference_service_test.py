@@ -77,3 +77,7 @@ class TestReferenceService(unittest.TestCase):
     def test_delete_reference_by_citekey(self):
         result = self.reference_repository_mock.delete_selected_reference("martin01")
         self.assertEqual(result, "martin01")
+
+    def test_get_reference_by_citekey(self):
+        reference = self.reference_service.get_reference("cormen01")
+        self.assertEqual(reference["title"], "Data Structures and Algorithms")
