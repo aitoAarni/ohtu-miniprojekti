@@ -29,7 +29,7 @@ class BibExport:
                     continue
                 if item:
                     bib_reference += "    " + key + " = {" + str(item) + "},\n"
-            bib_reference += "}\n\n"
+            bib_reference += "}\r"
             output += bib_reference
 
         self.filemanager.write_document(output, self.filename)
