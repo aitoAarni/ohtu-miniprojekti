@@ -131,3 +131,34 @@ class TestReferenceRepository(unittest.TestCase):
         reference_list = self.reference_repository.fetch_matching_references(
             "o01")
         self.assertEqual(len(reference_list), 2)
+
+    def test_add_references_from_bib_file_stores_correct_amount_of_references(self):
+        all_references = self.reference_repository.get_all()
+        new_references = [
+            {
+                "citekey": "test_citekey123",
+                "author": "Cat McMuffin123",
+                "title": "Meow666",
+                "journal": "Catnip daily420",
+                "year": 2020,
+            },
+            {
+                "citekey": all_references[0]["citekey"],
+                "author": "Test author1",
+                "title": "Test title1",
+                "journal": "Journal007",
+                "year": 1999
+            },
+            {
+                "citekey": all_references[1]["citekey"],
+                "author": "Test author2",
+                "title": "Test title2",
+                "journal": "Journal10",
+                "year": 2006
+            }
+        ]
+        
+        self.reference_repository.add_references_from_bib_file(new_references)
+        all_references_end = self.reference_repository.get_all()
+
+        self.assertEqual(len(all_references)+1, len(all_references_end))
