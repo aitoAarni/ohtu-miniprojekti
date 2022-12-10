@@ -157,7 +157,7 @@ class TestReferenceRepository(unittest.TestCase):
                 "year": 2006
             }
         ]
-        
+
         self.reference_repository.add_references_from_bib_file(new_references)
         all_references_end = self.reference_repository.get_all()
 

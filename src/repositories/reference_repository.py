@@ -173,7 +173,6 @@ class ReferenceRepository:
             self.add_reference(reference)
 
         return new_references
-        
 
 default_reference_repository = ReferenceRepository(get_database_connection())
 default_test_reference_repository = ReferenceRepository(
