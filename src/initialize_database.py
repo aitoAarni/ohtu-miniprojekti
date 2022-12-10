@@ -42,13 +42,7 @@ def create_tables(connection):
             address TEXT,
             edition TEXT,
             month INTEGER,
-            note TEXT
-        );
-    ''')
-
-    cursor.execute('''
-        CREATE TABLE TAGS (
-            citekey TEXT,
+            note TEXT,
             tag TEXT
         );
     ''')
@@ -57,7 +51,7 @@ def create_tables(connection):
 
 
 def create_mock_data(connection):
-    """Creates mock-data to test database in initial build. Remove this when the database is setup and tests are configured.
+    """Creates mock-data to test database in initial build. This was a requirement for the client's demo session.
 
     Args:
         connection (connect object): an object that enables database connection
@@ -77,7 +71,8 @@ def create_mock_data(connection):
         "number": None,
         "pages": 14,
         "month": 11,
-        "note": "my favorite article"
+        "note": "my favorite article",
+        "tag": None
     }
 
     reference2 = {
@@ -90,25 +85,57 @@ def create_mock_data(connection):
         "number": None,
         "pages": 214,
         "month": 2,
-        "note": "my 2nd favorite article"
+        "note": "my 2nd favorite article",
+        "tag": "thesis"
     }
 
     reference3 = {
         "citekey": "martin01",
         "author": "Uncle Bob",
-        "title": "Agile is hip",
+        "title": "The Agile hip-revolution",
         "journal": "Agile-fans",
         "year": 2011,
         "volume": None,
         "number": None,
         "pages": 11,
         "month": 1,
-        "note": "Controversial stuff"
+        "note": "Controversial stuff",
+        "tag": "fun"
+    }
+
+    reference4 = {
+        "citekey": "sipser01",
+        "author": "M. Sipser",
+        "title": "Computate this!",
+        "journal": "Hardcore CS-fans daily",
+        "year": 2018,
+        "volume": None,
+        "number": None,
+        "pages": 262,
+        "month": 2,
+        "note": "Fantastic but a bit brief article",
+        "tag": "thesis"
+    }
+
+    reference5 = {
+        "citekey": "gur07",
+        "author": "Gabriel Uru",
+        "title": "GNU or out!",
+        "journal": "GNUru journal",
+        "year": 2014,
+        "volume": None,
+        "number": None,
+        "pages": 262,
+        "month": 2,
+        "note": "Unreadable",
+        "tag": "shellscripting"
     }
 
     references.append(reference1)
     references.append(reference2)
     references.append(reference3)
+    references.append(reference4)
+    references.append(reference5)
 
     for reference in references:
         cursor.execute('''
@@ -122,8 +149,9 @@ def create_mock_data(connection):
                 number,
                 pages,
                 month,
-                note)
-                VALUES (?,?,?,?,?,?,?,?,?,?)''',
+                note,
+                tag)
+                VALUES (?,?,?,?,?,?,?,?,?,?,?)''',
                        [reference.get("citekey"),
                         reference.get("author"),
                         reference.get("title"),
@@ -133,7 +161,8 @@ def create_mock_data(connection):
                         reference.get("number"),
                         reference.get("pages"),
                         reference.get("month"),
-                        reference.get("note")]
+                        reference.get("note"),
+                        reference.get("tag")]
                        )
 
         connection.commit()

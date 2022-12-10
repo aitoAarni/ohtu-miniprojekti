@@ -25,7 +25,7 @@ class TestReferenceRepository(unittest.TestCase):
 
     def test_get_all_returns_three_entries(self):
         result = self.reference_repository.get_all()
-        self.assertEqual(3, len(result))
+        self.assertEqual(5, len(result))
 
     def test_add_article_succeeds(self):
         reference = Reference()
@@ -39,7 +39,7 @@ class TestReferenceRepository(unittest.TestCase):
         }
         self.reference_repository.add_reference(reference)
         result = self.reference_repository.get_all()
-        self.assertEqual(4, len(result))
+        self.assertEqual(6, len(result))
 
     def test_citekey_is_not_available_returns_false(self):
         result = self.reference_repository.citekey_is_available('martin01')
