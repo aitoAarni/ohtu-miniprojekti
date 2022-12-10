@@ -118,10 +118,10 @@ def filter_out_empty_fields(reference):
 
 def select_importable_file(reference_service, user_io):
     importable_files = reference_service.get_importable_files()
-    user_io.output_reference("Importable files (from imports directory): \n")
+    user_io.output_reference("Importable files (from imports directory):")
     for file in importable_files:
-        user_io.output_reference(f'{file}\n')
-    selected_file = user_io.input_reference('\t Enter file to be imported: ')
+        user_io.output_reference(f'{file}')
+    selected_file = user_io.input_reference('\n\t Enter file to be imported: ')
     if selected_file not in importable_files:
         user_io.output_reference("File not found \n")
         return False
@@ -132,8 +132,9 @@ def import_file(file_name, reference_service, user_io):
         return
 
     imported_citekeys = reference_service.import_file(file_name)
-    user_io.output_reference('Imported citekeys: \n')
+    user_io.output_reference('\nImported citekeys:')
     for citekey in imported_citekeys:
-        user_io.output_reference(f'{citekey}\n')
+        user_io.output_reference(f'{citekey}')
     if not imported_citekeys or imported_citekeys == []:
-        user_io.output_reference('None\n')
+        user_io.output_reference('None')
+    user_io.output_reference('')

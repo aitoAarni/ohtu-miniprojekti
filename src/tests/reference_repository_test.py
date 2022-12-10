@@ -157,6 +157,17 @@ class TestReferenceRepository(unittest.TestCase):
                 "year": 2006
             }
         ]
+        reference1 = Reference()
+        for key, value in new_references[0].items():
+            reference1.set_field(key, value)
+        reference2 = Reference()
+        for key, value in new_references[1].items():
+            reference2.set_field(key, value)
+        reference3 = Reference()
+        for key, value in new_references[2].items():
+            reference3.set_field(key, value)
+
+        new_references = [reference1, reference2, reference3]
 
         self.reference_repository.add_references_from_bib_file(new_references)
         all_references_end = self.reference_repository.get_all()

@@ -160,7 +160,7 @@ class ReferenceRepository:
         return references
 
     def add_references_from_bib_file(self, references: list) -> list:
-        new_references = [reference for reference in references if self.citekey_is_available(reference["citekey"])]
+        new_references = [reference.get_fields() for reference in references if self.citekey_is_available(reference.get_fields()["citekey"])]
         new_references_mapped = []
 
         for reference in new_references:

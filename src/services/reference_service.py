@@ -93,7 +93,6 @@ class ReferenceService:
     def import_file(self, file_name:str) -> list:
         bib = BibImport()
         reference_entities_list = bib.create_reference_entities(file_name)
-        #print(reference_entities_list) #this is for testing
         imported_references = self.reference_repository.add_references_from_bib_file(reference_entities_list)
-        imported_citekeys = [reference.get_fields()['citekey'] for reference in imported_references]
+        imported_citekeys = [reference['citekey'] for reference in imported_references]
         return imported_citekeys

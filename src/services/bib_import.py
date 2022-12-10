@@ -29,7 +29,7 @@ class BibImport:
                     continue
                 if row[0] == "@":
                     parts = row.split("{")
-                    reference.set_field("citekey", parts[1])
+                    reference.set_field("citekey", parts[1][:-1])
                 elif len(row) > 1:
                     parts = row.split("=")
                     reference.set_field(parts[0][4:-1], parts[1][2:-2])
