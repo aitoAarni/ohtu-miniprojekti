@@ -23,5 +23,9 @@ class FileManagement:
         with open(file_and_directory, "w", encoding="utf-8") as file:
             file.write(content)
 
+    def read_document(self, filename: str) -> str:
+        output = ""
+        return output
+
 
 default_file_management = FileManagement()
