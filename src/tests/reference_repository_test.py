@@ -109,16 +109,17 @@ class TestReferenceRepository(unittest.TestCase):
         self.reference_repository.delete_selected_reference("unused_citekey")
         entries_after_deletion = self.reference_repository.get_all()
         self.assertEqual(len(entries), len(entries_after_deletion))
-    
+
     def test_fetch_matching_reference_fetches_right_reference(self):
         citekey1 = "Cato01"
         citekey2 = "Doggo01"
         self.reference_repository.delete_all()
         self.add_reference(citekey1)
         self.add_reference(citekey2)
-        reference_list = self.reference_repository.fetch_matching_references("ato")
+        reference_list = self.reference_repository.fetch_matching_references(
+            "ato")
         self.assertEqual(len(reference_list), 1)
-    
+
     def test_fetch_matching_reference_fetches_all_matching_references(self):
         citekey1 = "Cato01"
         citekey2 = "Doggo01"
@@ -127,5 +128,6 @@ class TestReferenceRepository(unittest.TestCase):
         self.add_reference(citekey1)
         self.add_reference(citekey2)
         self.add_reference(citekey3)
-        reference_list = self.reference_repository.fetch_matching_references("o01")
+        reference_list = self.reference_repository.fetch_matching_references(
+            "o01")
         self.assertEqual(len(reference_list), 2)
