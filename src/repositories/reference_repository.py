@@ -149,9 +149,10 @@ class ReferenceRepository:
         or lower(title) LIKE ?
         or lower(journal) LIKE ?
         or lower(year) LIKE ?
+        or lower(tag) LIKE ?
         ;
         """
-        cursor.execute(command, [(f"%{match_string}%".lower())] * 5)
+        cursor.execute(command, [(f"%{match_string}%".lower())] * 6)
         rows = cursor.fetchall()
         references = []
         for row in rows:
