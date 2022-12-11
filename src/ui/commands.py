@@ -18,7 +18,7 @@ def command_selector(command, reference_service, user_io):
     elif command == "delete":
         delete_reference(reference_service, user_io)
     elif command == "search":
-        search_references(reference_service, user_io)
+        search_references_with_given_string(reference_service, user_io)
 
 
 def new_reference(reference_service, user_io):
