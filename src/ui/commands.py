@@ -22,6 +22,7 @@ def command_selector(command, reference_service, user_io):
 def new_reference(reference_service, user_io):
     fields_dict = reference_service.get_template_reference()
     required_fields_list = reference_service.get_required_fields()
+    optional_fields_list = reference_service.get_optional_fields()
 
     for field in required_fields_list:
         user_input = user_io.input_reference(f"\t Enter {field}: ")
@@ -31,7 +32,11 @@ def new_reference(reference_service, user_io):
             user_input = user_io.input_reference(f"\t Enter {field}: ")
             validity = reference_service.check_data_validity(field, user_input)
         fields_dict[field] = user_input
-
+    
+    for field in optional_fields_list:
+        user_input = user_io.input_reference(f"\t Enter {field}: ")
+        if len(user_input):
+            fields_dict[field] = user_input
     return fields_dict
 
 

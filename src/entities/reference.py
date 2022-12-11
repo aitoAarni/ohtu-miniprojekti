@@ -15,13 +15,19 @@ class Reference:
             "edition": None,
             "address": None,
             "month": None,
-            "note": None
+            "note": None,
+            "tag": None
         }
         self._required_fields = ["citekey",
                                  "author", "title", "journal", "year"]
 
+        self._optional_fields = ["tag"]
+
     def get_required_fields(self) -> list:
         return self._required_fields
+
+    def get_optional_fields(self) -> list:
+        return self._optional_fields
 
     def get_fields(self) -> dict:
         return self._fields

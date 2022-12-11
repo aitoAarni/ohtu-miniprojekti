@@ -56,8 +56,9 @@ class ReferenceRepository:
                 address,
                 edition,
                 month,
-                note)
-                VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)''',
+                note,
+                tag)
+                VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)''',
                        [reference.get("citekey"),
                         reference.get("author"),
                         reference.get("title"),
@@ -72,7 +73,8 @@ class ReferenceRepository:
                         reference.get("edition"),
                         reference.get("address"),
                         reference.get("month"),
-                        reference.get("note")
+                        reference.get("note"),
+                        reference.get("tag")
                         ]
                        )
 

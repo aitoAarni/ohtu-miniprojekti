@@ -18,6 +18,9 @@ class ReferenceService:
     def get_required_fields(self):
         return self.reference.get_required_fields()
 
+    def get_optional_fields(self):
+        return self.reference.get_optional_fields()
+
     def save_reference(self, fields_dict :dict):
         for key, value in fields_dict.items():
             self.reference.set_field(key, value)
