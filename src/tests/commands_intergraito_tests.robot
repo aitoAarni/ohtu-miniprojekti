@@ -36,6 +36,14 @@ Edit Reference
     Run Application
     Edited Output Should Contain  serious business  Me  CEO  my diary  2022
 
+Search References
+    Add Reference To Database
+    Input Command  search
+    Input Command  2000
+    Input Command  exit
+    Run Application
+    Edited Output Should Contain  serious business  Teppo  lil study  some scrappy one  2000
+
 
 *** Keywords ***
 Output Should Contain Citekey
