@@ -85,6 +85,3 @@ class TestReferenceService(unittest.TestCase):
     def test_get_importable_files_returns_a_list(self):
         file_list = self.reference_service.get_importable_files()
         self.assertEqual(type(file_list), list)
-
-    def test_search_references(self):
-        pass
