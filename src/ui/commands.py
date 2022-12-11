@@ -166,9 +166,9 @@ def import_file(file_name, reference_service, user_io):
     user_io.output_reference('')
 
 
-def search_references(reference_service, user_io):
+def search_references_with_given_string(reference_service, user_io):
     user_input = user_io.input_reference("\t Search with string: ")
-    result = reference_service.search_references(user_input)
+    result = reference_service.search_references_with_string(user_input)
     if not result:
         user_io.output_reference("No references containig that string\n")
     else:

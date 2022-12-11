@@ -100,6 +100,6 @@ class ReferenceService:
         imported_citekeys = [reference['citekey'] for reference in imported_references]
         return imported_citekeys
 
-    def search_references(self, match_string):
+    def search_references_with_string(self, match_string):
         result = self.reference_repository.fetch_matching_references(match_string)
         return result
