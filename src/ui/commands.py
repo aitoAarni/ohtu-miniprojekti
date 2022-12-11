@@ -32,7 +32,7 @@ def new_reference(reference_service, user_io):
             user_input = user_io.input_reference(f"\t Enter {field}: ")
             validity = reference_service.check_data_validity(field, user_input)
         fields_dict[field] = user_input
-    
+
     for field in optional_fields_list:
         user_input = user_io.input_reference(f"\t Enter {field}: ")
         if len(user_input):
