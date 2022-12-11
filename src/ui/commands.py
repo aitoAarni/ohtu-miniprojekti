@@ -171,4 +171,6 @@ def search_references(reference_service, user_io):
     result = reference_service.search_references(user_input)
     if not result:
         user_io.output_reference("No references containig that string\n")
-    return result
+    else:
+        for reference in result:
+            print_reference_objects(reference, user_io)
