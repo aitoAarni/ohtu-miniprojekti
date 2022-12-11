@@ -99,3 +99,7 @@ class ReferenceService:
         imported_references = self.reference_repository.add_references_from_bib_file(reference_entities_list)
         imported_citekeys = [reference['citekey'] for reference in imported_references]
         return imported_citekeys
+
+    def search_references(self, match_string):
+        result = self.reference_repository.fetch_matching_references(match_string)
+        return result

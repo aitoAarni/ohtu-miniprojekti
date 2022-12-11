@@ -17,6 +17,8 @@ def command_selector(command, reference_service, user_io):
         create_bib(reference_service, user_io, file_name)
     elif command == "delete":
         delete_reference(reference_service, user_io)
+    elif command == "search":
+        search_references(reference_service, user_io)
 
 
 def new_reference(reference_service, user_io):
@@ -162,3 +164,11 @@ def import_file(file_name, reference_service, user_io):
     if not imported_citekeys or imported_citekeys == []:
         user_io.output_reference('None')
     user_io.output_reference('')
+
+
+def search_references(reference_service, user_io):
+    user_input = user_io.input_reference("\t Search with string: ")
+    result = reference_service.search_references(user_input)
+    if not result:
+        user_io.output_reference("No references containig that string\n")
+    return result
