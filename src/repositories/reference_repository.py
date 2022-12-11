@@ -27,7 +27,8 @@ class ReferenceRepository:
                 address,
                 edition,
                 month,
-                note FROM REFERENCE''')
+                note,
+                tag FROM REFERENCE''')
 
         rows = cursor.fetchall()
         for row in rows:
