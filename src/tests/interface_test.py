@@ -32,6 +32,7 @@ class TestInterface(unittest.TestCase):
         self.user_io.add_input("title")
         self.user_io.add_input("journal")
         self.user_io.add_input("1997")
+        self.user_io.add_input("tag")
         self.user_io.add_input("exit")
 
         self.interface.start()

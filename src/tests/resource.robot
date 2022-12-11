@@ -5,7 +5,7 @@ Library  ../AppLibrary.py
 
 *** Keywords *** 
 Input Command
-    [Arguments]  ${argument}
+    [Arguments]  ${argument}=${EMPTY}
     Add Input  ${argument}
 
 Add Reference To Database

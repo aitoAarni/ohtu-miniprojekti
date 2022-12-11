@@ -10,6 +10,7 @@ Add Reference
     Input Command  title1Value
     Input Command  journal1Value
     Input Command  1900
+    Input Command
     Input Command  exit
     Run Application
     Output Should Contain Citekey  citekeyValue
@@ -30,6 +31,7 @@ Edit Reference
     Input Command  CEO
     Input Command  my diary
     Input Command  2022
+    Input Command
     Input Command  exit
     Run Application
     Edited Output Should Contain  serious business  Me  CEO  my diary  2022
