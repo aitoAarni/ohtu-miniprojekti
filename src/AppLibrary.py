@@ -21,13 +21,14 @@ class AppLibrary:
         self._interface.start()
     #pylint: disable=too-many-arguments
 
-    def create_reference_to_database(self, citekey, author, title, journal, year):
+    def create_reference_to_database(self, citekey, author, title, journal, year, tag=None):
         reference_dict = {
             "citekey": citekey,
             "author": author,
             "title": title,
             "journal": journal,
-            "year": int(year)
+            "year": int(year),
+            "tag": tag
         }
         # get_template_reference() is called to change ReferenceService
         # object's reference attribute
@@ -48,6 +49,12 @@ class AppLibrary:
             if user_record_in_database:
                 return True
         raise AssertionError(f"Fields {fields} are not in a reference")
+
+    def output_contains(self, string: str):
+        for item in self._stub_io.outputs:
+            if string in item:
+                return True
+        raise AssertionError("No match found.")
 
     def get_all_references(self):
         return self._interface.reference_service.get_all_references()

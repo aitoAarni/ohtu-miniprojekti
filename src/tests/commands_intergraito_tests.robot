@@ -19,6 +19,8 @@ Delete Reference
     Add Reference To Database
     Input Command  delete
     Input Command  serious business
+    Input Command  delete
+    Input Command  citekey02
     Input Command  exit
     Run Application  
     Output Should Be Empty
@@ -43,6 +45,21 @@ Search References
     Input Command  exit
     Run Application
     Edited Output Should Contain  serious business  Teppo  lil study  some scrappy one  2000
+
+Search With Tag Returns Correct Result
+    Add Reference To Database
+    Input Command  search
+    Input Command  laskennan-mallit
+    Input Command  exit
+    Run Application
+    Output Should Contain  citekey02
+
+Listing References Returns All References
+    Add Reference To Database
+    Input Command  list
+    Input Command  exit
+    Run Application
+    Output Contains  citekey02
 
 
 *** Keywords ***
