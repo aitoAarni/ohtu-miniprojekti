@@ -85,3 +85,12 @@ class TestReferenceService(unittest.TestCase):
     def test_get_importable_files_returns_a_list(self):
         file_list = self.reference_service.get_importable_files()
         self.assertEqual(type(file_list), list)
+
+    def test_search_reference_returns_correct_amount_of_references(self):
+        references = self.reference_service.search_references_with_string("sipser")
+        self.assertEqual(len(references), 1)
+
+    def test_search_reference_returns_correct_references(self):
+        references = self.reference_service.search_references_with_string("cormen")
+        self.assertEqual(references[0]["title"], "Data Structures and Algorithms")
+        self.assertEqual(references[1]["author"], "Cormen et. al.")
