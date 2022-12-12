@@ -45,8 +45,11 @@ def new_reference(reference_service, user_io):
 def list_references(reference_service, user_io):
     references = reference_service.get_all_references()
 
+    print_header("LIST OF SAVED REFERENCES", user_io)
+
     for reference in references:
         print_reference_objects(reference, user_io)
+        user_io.output_reference("")
 
     return references
 
@@ -66,8 +69,11 @@ def print_reference_objects(reference, user_io):
             user_io.output_reference(f"  └── {key}: {value}")
         else:
             user_io.output_reference(f"  ├── {key}: {value}")
-    user_io.output_reference("\n")
 
+def print_header(header, user_io):
+    user_io.output_reference(header)
+    user_io.output_reference("-" * len(header))
+    user_io.output_reference("")
 
 def create_name_for_bib(reference_service, user_io):
     user_input = user_io.input_reference("\t Enter a name for your bib file: ")

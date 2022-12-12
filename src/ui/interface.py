@@ -7,6 +7,7 @@ class Interface:
 
     def start(self):
         while True:
+            print("")
             command = self.user_io.input_reference(
                 "Enter command: (new, list, edit, import, export, delete, search, exit): ").lower()
 
