@@ -35,6 +35,11 @@ Testikattavuusraportin saa luotua komennolla
 poetry run invoke coverage-report
 ```
 
+Robottitestit voi ajaa komennolla
+```
+poetry run robot src
+```
+
 Pylintin voi suorittaa komennolla
 ```
 poetry run invoke lint
