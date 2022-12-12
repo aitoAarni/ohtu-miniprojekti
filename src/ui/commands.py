@@ -26,6 +26,8 @@ def new_reference(reference_service, user_io):
     required_fields_list = reference_service.get_required_fields()
     optional_fields_list = reference_service.get_optional_fields()
 
+    print_header("ADD A NEW REFERENCE", user_io)
+
     for field in required_fields_list:
         user_input = user_io.input_reference(f"\t Enter {field}: ")
         validity = reference_service.check_data_validity(field, user_input)
@@ -49,7 +51,6 @@ def list_references(reference_service, user_io):
 
     for reference in references:
         print_reference_objects(reference, user_io)
-        user_io.output_reference("")
 
     return references
 
@@ -64,18 +65,22 @@ def print_reference_objects(reference, user_io):
             continue
 
         if key == "citekey":
-            user_io.output_reference(f"{key} {value}")
+            user_io.output_reference(f"{key}: {value}")
+            user_io.output_reference("")
         elif key == last_key:
             user_io.output_reference(f"  └── {key}: {value}")
         else:
             user_io.output_reference(f"  ├── {key}: {value}")
+    user_io.output_reference("")
 
 def print_header(header, user_io):
+    user_io.output_reference("-" * len(header))
     user_io.output_reference(header)
     user_io.output_reference("-" * len(header))
     user_io.output_reference("")
 
 def create_name_for_bib(reference_service, user_io):
+    print_header("EXPORT SAVED REFERENCES TO A FILE", user_io)
     user_input = user_io.input_reference("\t Enter a name for your bib file: ")
     validity = reference_service.check_bib_name_validity(user_input)
     while validity is not True:
@@ -92,6 +97,7 @@ def create_bib(reference_service, user_io, file_name):
 
 
 def delete_reference(reference_service, user_io):
+    print_header("DELETE A REFERENCE", user_io)
     user_input = user_io.input_reference("\t Enter citekey: ")
     result = reference_service.delete_reference_by_citekey(user_input)
     if not result:
@@ -138,7 +144,6 @@ def edit_reference(reference_service, user_io):
         user_io.output_reference(f"Reference {result_dict['citekey']} updated")
     else:
         user_io.output_reference("Error: Reference not updated!")
-    print("")
 
 
 def filter_out_empty_fields(reference):
@@ -148,6 +153,7 @@ def filter_out_empty_fields(reference):
 
 
 def select_importable_file(reference_service, user_io):
+    print_header("IMPORT REFERENCES FROM A FILE", user_io)
     importable_files = reference_service.get_importable_files()
     user_io.output_reference("Importable files (from imports directory):")
     for file in importable_files:
@@ -173,10 +179,13 @@ def import_file(file_name, reference_service, user_io):
 
 
 def search_references_with_given_string(reference_service, user_io):
+    print_header("SEARCH FROM REFERENCES", user_io)
     user_input = user_io.input_reference("\t Search with string: ")
     result = reference_service.search_references_with_string(user_input)
+    user_io.output_reference("")
     if not result:
-        user_io.output_reference("No references containig that string\n")
+        user_io.output_reference("No references containing that string")
     else:
+        print_header(f'Search results matching keyword "{user_input}":', user_io)
         for reference in result:
             print_reference_objects(reference, user_io)
