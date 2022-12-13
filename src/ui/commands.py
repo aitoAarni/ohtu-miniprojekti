@@ -19,6 +19,8 @@ def command_selector(command, reference_service, user_io):
         delete_reference(reference_service, user_io)
     elif command == "search":
         search_references_with_given_string(reference_service, user_io)
+    else:
+        user_io.output_reference("Command not found")
 
 
 def new_reference(reference_service, user_io):
