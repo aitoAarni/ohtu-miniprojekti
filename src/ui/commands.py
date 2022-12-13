@@ -25,24 +25,24 @@ def new_reference(reference_service, user_io):
     fields_dict = reference_service.get_template_reference()
     required_fields_list = reference_service.get_required_fields()
     optional_fields_list = reference_service.get_optional_fields()
-
     print_header("ADD A NEW REFERENCE", user_io)
 
     for field in required_fields_list:
-        user_input = user_io.input_reference(f"\t Enter {field}: ")
+        user_input = user_io.input_reference(f"Enter {field}: ")
         validity = reference_service.check_data_validity(field, user_input)
         while validity is not True:
             user_io.output_reference(validity)
-            user_input = user_io.input_reference(f"\t Enter {field}: ")
+            user_input = user_io.input_reference(f"Enter {field}: ")
             validity = reference_service.check_data_validity(field, user_input)
         fields_dict[field] = user_input
 
     for field in optional_fields_list:
-        user_input = user_io.input_reference(f"\t Enter {field}: ")
+        user_input = user_io.input_reference(f"Enter {field}: ")
         if len(user_input):
             fields_dict[field] = user_input
-    return fields_dict
 
+    user_io.output_reference(f"\nCitekey {fields_dict['citekey']} added")
+    return fields_dict
 
 def list_references(reference_service, user_io):
     references = reference_service.get_all_references()
@@ -81,29 +81,29 @@ def print_header(header, user_io):
 
 def create_name_for_bib(reference_service, user_io):
     print_header("EXPORT SAVED REFERENCES TO A FILE", user_io)
-    user_input = user_io.input_reference("\t Enter a name for your bib file: ")
+    user_input = user_io.input_reference("Enter a name for your bib file: ")
     validity = reference_service.check_bib_name_validity(user_input)
     while validity is not True:
         user_io.output_reference(validity)
         user_input = user_io.input_reference(
-            "\t Enter a name for your bib file: ")
+            "Enter a name for your bib file: ")
         validity = reference_service.check_bib_name_validity(user_input)
     return user_input
 
 
 def create_bib(reference_service, user_io, file_name):
     reference_service.create_bib(file_name)
-    user_io.output_reference("Bib file saved into saved_exports directory\n")
+    user_io.output_reference("\nBib file saved into saved_exports directory")
 
 
 def delete_reference(reference_service, user_io):
     print_header("DELETE A REFERENCE", user_io)
-    user_input = user_io.input_reference("\t Enter citekey: ")
+    user_input = user_io.input_reference("Enter citekey: ")
     result = reference_service.delete_reference_by_citekey(user_input)
     if not result:
-        user_io.output_reference("Nothing deleted\n")
+        user_io.output_reference("\nNothing deleted")
     else:
-        user_io.output_reference("Entry deleted\n")
+        user_io.output_reference(f"\nEntry {result} deleted")
 
 
 def edit_reference(reference_service, user_io):
@@ -158,7 +158,7 @@ def select_importable_file(reference_service, user_io):
     user_io.output_reference("Importable files (from imports directory):")
     for file in importable_files:
         user_io.output_reference(f'{file}')
-    selected_file = user_io.input_reference('\n\t Enter file to be imported: ')
+    selected_file = user_io.input_reference('\nEnter file to be imported: ')
     if selected_file not in importable_files:
         user_io.output_reference("File not found \n")
         return False
@@ -175,12 +175,11 @@ def import_file(file_name, reference_service, user_io):
         user_io.output_reference(f'{citekey}')
     if not imported_citekeys or imported_citekeys == []:
         user_io.output_reference('None')
-    user_io.output_reference('')
 
 
 def search_references_with_given_string(reference_service, user_io):
     print_header("SEARCH FROM REFERENCES", user_io)
-    user_input = user_io.input_reference("\t Search with string: ")
+    user_input = user_io.input_reference("Search with string: ")
     result = reference_service.search_references_with_string(user_input)
     user_io.output_reference("")
     if not result:
