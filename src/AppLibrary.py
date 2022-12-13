@@ -1,7 +1,9 @@
+import os
 from stub_io import StubIO
 from ui.interface import Interface
 from services.reference_service import ReferenceService
 from repositories.reference_repository import default_test_reference_repository
+from services.file_management import default_file_management as filemanager
 
 
 class AppLibrary:
@@ -13,6 +15,16 @@ class AppLibrary:
 
     def delete_all_records_from_database(self):
         self._reference_service.reference_repository.delete_all()
+
+    def delete_exported_and_imported_files(self):
+        export_filepath = os.path.join(
+            filemanager.import_directory, 'robot-test.bib')
+        import_filepath = os.path.join(
+            filemanager.export_directory, 'robot-test.bib')
+        if os.path.exists(export_filepath):
+            os.remove(export_filepath)
+        if os.path.exists(import_filepath):
+            os.remove(import_filepath)
 
     def add_input(self, value):
         self._stub_io.add_input(value)
@@ -64,6 +76,23 @@ class AppLibrary:
         if len(references) != 0:
             raise AssertionError(
                 "There shouldn't be any references in the database, but there are")
+
+    def create_bib_file_for_robot_test(self):
+        bib_test_file = os.path.join(
+            filemanager.import_directory, 'robot-test.bib')
+        with open(bib_test_file, 'w', encoding="utf-8") as file:
+            file.write('''
+@article{testcormen01,
+    author = {Cormen et. al.},
+    title = {Data Structures and Algorithms},
+    journal = {Fantastic Algorithms},
+    year = {2000},
+    volume = {vol. 202},
+    pages = {14},
+    month = {11},
+    note = {my favorite article},
+}
+            ''')
 
 
 if __name__ == "__main__":
