@@ -3,7 +3,6 @@ import unittest
 from services.bib_import import BibImport
 from AppLibrary import AppLibrary
 
-
 class TestBibExport(unittest.TestCase):
 
     def test_create_reference_entities_reads_file(self):
