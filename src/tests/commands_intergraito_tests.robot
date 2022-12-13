@@ -14,7 +14,7 @@ As A User I Can Add A Reference With Authors Title Year And Journal
     Input Command
     Input Command  exit
     Run Application
-    Output Should Contain Citekey  citekeyValue
+    Value Should Be Found In Database  citekeyValue
 
 As A User I Can List Stored References
     Add Reference To Database
@@ -53,7 +53,7 @@ As A User I Can Edit A Reference
     Input Command
     Input Command  exit
     Run Application
-    Edited Output Should Contain  serious business  Me  CEO  my diary  2022
+    Value Should Be Found In Database  serious business  Me  CEO  my diary  2022
 
 As A User I Can Search References With A Given Word
     Add Reference To Database
@@ -61,7 +61,7 @@ As A User I Can Search References With A Given Word
     Input Command  2000
     Input Command  exit
     Run Application
-    Edited Output Should Contain  serious business  Teppo  lil study  some scrappy one  2000
+    Value Should Be Found In Database  serious business  Teppo  lil study  some scrappy one  2000
 
 As A User I Can Search References With A Tag
     Add Reference To Database
@@ -69,7 +69,7 @@ As A User I Can Search References With A Tag
     Input Command  laskennan-mallit
     Input Command  exit
     Run Application
-    Output Should Contain  citekey02
+    Value Should Be Found In Database  citekey02
 
 As A User I Can Import References From A File
     Create Bib File For Robot Test 

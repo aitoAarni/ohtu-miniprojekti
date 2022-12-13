@@ -48,7 +48,7 @@ class AppLibrary:
         self._reference_service.get_template_reference()
         self._reference_service.save_reference(reference_dict)
 
-    def output_should_contain(self, *fields):
+    def value_should_be_found_in_database(self, *fields):
         keys = self._reference_service.get_required_fields()
         user_passed_fields_dict = {
             keys[i]: field for i, field in enumerate(fields)}
