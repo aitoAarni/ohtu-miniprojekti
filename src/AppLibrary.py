@@ -1,9 +1,9 @@
 import os
+from services.file_management import default_file_management as filemanager
+from services.reference_service import ReferenceService
 from stub_io import StubIO
 from ui.interface import Interface
-from services.reference_service import ReferenceService
 from repositories.reference_repository import default_test_reference_repository
-from services.file_management import default_file_management as filemanager
 
 
 class AppLibrary:
@@ -77,22 +77,23 @@ class AppLibrary:
             raise AssertionError(
                 "There shouldn't be any references in the database, but there are")
 
-    def create_bib_file_for_robot_test(self):
+    def create_bib_file_for_robot_test(self, filename = "robot-test.bib"):
         bib_test_file = os.path.join(
-            filemanager.import_directory, 'robot-test.bib')
+            filemanager.import_directory, filename)
         with open(bib_test_file, 'w', encoding="utf-8") as file:
             file.write('''
-@article{testcormen01,
-    author = {Cormen et. al.},
-    title = {Data Structures and Algorithms},
-    journal = {Fantastic Algorithms},
-    year = {2000},
-    volume = {vol. 202},
-    pages = {14},
-    month = {11},
-    note = {my favorite article},
-}
-            ''')
+            @article{testcormen01,
+                author = {Cormen et. al.},
+                title = {Data Structures and Algorithms},
+                journal = {Fantastic Algorithms},
+                year = {2000},
+                volume = {vol. 202},
+                pages = {14},
+                month = {11},
+                note = {my favorite article},
+            }
+                        ''')
+        return bib_test_file
 
 
 if __name__ == "__main__":
