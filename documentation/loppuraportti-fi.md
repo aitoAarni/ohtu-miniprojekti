@@ -22,6 +22,8 @@
 - Seuraavaa kertaa ajatellen ehkä yhteisten tapaamisten ajankäyttöä voisi tehostaa ja tiivistää.
 - Daily scrum tapaamisten säännöllisyydessä parannettavaa. Toisaalta miniprojektin työmäärärajoitteesta johtuen säännöllisistä daily scrumeista ei ollut suurta tarvetta.
 - Ideoiden jakaminen ja miettiminen sujui hyvin.
+- Mielestäni ryhmäläiset tekivät hyvin oman osansa ja ottivat vastuuta.
+- Oli avoin ja positiivinen ilmapiiri, sekä osattiin antaa ja ottaan vastaan kritiikkiä.
 
 ## Mitä opitte?
 
@@ -31,4 +33,4 @@
 - Olisi ollut hienoa oppia monipuolisemmin ketterän kehityksen työtapoja. Näihin toivon mukaan pääsee OhTu-projektissa enemmän syventymään.
 - Ryhmäkoodaamisessa on hyvä olla kommunikaatio kunnossa tai tulee ongelmia.
 - Versionhallinnan laadun ylläpito on myös tärkeää kun tehdään useaa ominaisuutta samaan aikaan.
-
+- Opin tässä miniprojektissa ja muutenkin kurssin aikana testien kirjoittamisen tärkeyden ja käytännööllisyyden.
