@@ -1,6 +1,6 @@
 # Loppuraportti
 
-**Ryhmän jäsenet:** Heidi Holappa,
+**Ryhmän jäsenet:** Heidi Holappa, Samu Syrjänen,
 
 ## Kohdatut ongelmat
 
@@ -9,6 +9,9 @@
 - Ajankäytön kanssa oli erityisesti kahdessa ensimmäisessä sprintissä ongelmia. Aikaa käytettiin liikaa
 - Osalla oli ongelmia Cubblin päivitykseen liittyen ja tämä toi lisäjännitystä projektiin
 - Ihan alussa myös jouduimme myös hieman hakemaan, että löysimme toteutustavan ja tekniikat, joilla kaikkien on hyvä osallistua yhteiseen projektiin.
+- Livenä ryhmätyöskentely osoittautui vaikeaksi, koska oli vaikea löytää sellaisia aikoja, jotka kaikille sopisi.
+- Robotin implementointi tuotti päänvaivaa.
+- Projektin aloittaminen oli vaikein vaihe. (sovelluksen rungon suunnittelu kun aloittaa tyhjästä)
 
 ## Mikä sujui hyvin?
 
@@ -17,6 +20,8 @@
 - Yhteistyö ja kommunikaatio sujui hyvin läpi koko projektin
 - Olimme hyvin valmistautuneet asiakastapaamisiin ja saimme niistä hyvää palautetta.
 - Seuraavaa kertaa ajatellen ehkä yhteisten tapaamisten ajankäyttöä voisi tehostaa ja tiivistää.
+- Daily scrum tapaamisten säännöllisyydessä parannettavaa. Toisaalta miniprojektin työmäärärajoitteesta johtuen säännöllisistä daily scrumeista ei ollut suurta tarvetta.
+- Ideoiden jakaminen ja miettiminen sujui hyvin.
 
 ## Mitä opitte?
 
@@ -24,3 +29,6 @@
 
 - Opin konkreettisesti, miksi ketterän kehittämisen työmenetelmissä on paljon hyviä käytäntöjä
 - Olisi ollut hienoa oppia monipuolisemmin ketterän kehityksen työtapoja. Näihin toivon mukaan pääsee OhTu-projektissa enemmän syventymään.
+- Ryhmäkoodaamisessa on hyvä olla kommunikaatio kunnossa tai tulee ongelmia.
+- Versionhallinnan laadun ylläpito on myös tärkeää kun tehdään useaa ominaisuutta samaan aikaan.
+
