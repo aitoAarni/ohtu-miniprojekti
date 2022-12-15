@@ -1,6 +1,6 @@
 # Loppuraportti
 
-**Ryhmän jäsenet:** Heidi Holappa, Samu Syrjänen,
+**Ryhmän jäsenet:** Heidi Holappa, Samu Syrjänen, Antti Romppanen
 
 ## Kohdatut ongelmat
 
@@ -34,3 +34,4 @@
 - Ryhmäkoodaamisessa on hyvä olla kommunikaatio kunnossa tai tulee ongelmia.
 - Versionhallinnan laadun ylläpito on myös tärkeää kun tehdään useaa ominaisuutta samaan aikaan.
 - Opin tässä miniprojektissa ja muutenkin kurssin aikana testien kirjoittamisen tärkeyden ja käytännööllisyyden.
+- Tiimissä devaus vaikuttaa ajoittain verkkaiselta, mutta lopulta kokonaisuudet valmistuvat huomattavasti nopeammin, sekä pienemmällä päänvaivalla, kuin yksin koodatessa.
