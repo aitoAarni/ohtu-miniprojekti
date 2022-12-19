@@ -35,6 +35,7 @@ Paketoidaan sovelluksen toimintalogiikka
 
 [Sovelluksen arkkitehtuuri](/documentation/architecture.md)  
 [Käyttöohje](/documentation/operation-manual.md)
+[Loppuraportti](/documentation/loppuraportti-fi.md)
 
 ## Linkit
 
