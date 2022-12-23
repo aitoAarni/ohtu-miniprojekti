@@ -30,15 +30,17 @@ class ReferenceService:
         references = self.reference_repository.get_all()
         return references
 
+    def citekey_is_available(self, citekey):
+        return self.reference_repository.citekey_is_available(citekey)
+
     def check_data_validity(self, field, user_input):
         if not user_input:
             return 'Input required'
 
         if field == 'citekey':
-            all_references = self.get_all_references()
-            for reference in all_references:
-                if user_input == reference['citekey']:
-                    return 'Citekey taken'
+            result = self.citekey_is_available(user_input)
+            if not result:
+                return 'Citekey taken'
 
         if field == 'author':
             if any(char.isdigit() for char in user_input):
